@@ -144,7 +144,7 @@ plan to disable the default configuration:
 
 You may want to use the `$options` parameter to overwrite default configuration options or build a ProFTPD configuration from scratch. There are few things you need to know:
 
-* `sections`: ProFTPD's configuration uses a number of &lt;sections&gt;. You create a new section by specifying a hash, the module's erb template will to the rest for you. This works for special cases like &lt;IfDefine X&gt; too.
+* `sections`: ProFTPD's configuration uses a number of &lt;sections&gt;. You create a new section by specifying a hash, the module's erb template will do the rest for you. This works for special cases like &lt;IfDefine X&gt; too.
 * `ROOT`: To add items to the root of the ProFTPD configuration, use this namespace.
 
 ### Parameters
