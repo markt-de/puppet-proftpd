@@ -1,0 +1,106 @@
+# File is managed by Puppet
+
+# Include DSO modules
+Include <%= @base_dir %>/modules.conf
+
+<% # NOTE: Order is important, do NOT sort hashes. -%>
+<% @real_options.map do |k,v| -%>
+<%   if v.is_a?(Hash) -%>
+<%   # ignore special value -%>
+<%     if k != 'ROOT' -%>
+<<%=     k %>>
+<%       ind = '  ' -%>
+<%     else -%>
+<%       # no indention for special value -%>
+<%       ind = '' -%>
+<%     end -%>
+<%     options_array = v.keys -%>
+<%     # layer 1 -%>
+<%     v.map do |ki, vi| -%>
+<%       if vi.is_a?(Hash) -%>
+<%         ai = vi.keys -%>
+  <<%=     ki %>>
+<%         # layer 2 -%>
+<%         vi.map do |kii, vii| -%>
+<%           if vii.is_a?(Hash) -%>
+<%             aii = vii.keys -%>
+    <<%=       kii %>>
+<%             # layer 3 -%>
+<%             vii.map do |kiii, viii| -%>
+<%               if viii.is_a?(Hash) -%>
+<%                 aiii = viii.keys -%>
+      <<%=         kiii %>>
+<%                 # layer 4 -%>
+<%                 viii.map do |kiiii, viiii| -%>
+<%                   if viiii.is_a?(Hash) -%>
+<%                     aiiii = viiii.keys -%>
+      <<%=             kiiii %>>
+<%                   elsif viiii == true or viiii == '' -%>
+        <%=              kiiii %>
+<%                   elsif viiii.is_a?(Array) -%>
+<%                     viiii.each do |viiiii| -%>
+        <%=                kiiii %> <%= viiiii %>
+<%                     end -%>
+<%                   elsif ![nil, '', :undef].include?(viiii) -%>
+        <%=              kiiii %> <%= viiii %>
+<%                   end -%>
+<%                   # check if this is the last value for this tag -%>
+<%                   if aiii[-1] == kiiii -%>
+<%                     # split opening tag to get closing tag -%>
+<%                     close_tag = scope.function_split([kiii, ' ']) -%>
+      </<%=            close_tag[0] %>>
+<%                   end -%>
+<%                 end -%>
+<%               # layer 3 (cont.) -%>
+<%               elsif viii == true or viii == '' -%>
+      <%=          kiii %>
+<%               elsif viii.is_a?(Array) -%>
+<%                 viii.each do |viiii| -%>
+      <%=            kiii %> <%= viiii %>
+<%                 end -%>
+<%               elsif ![nil, '', :undef].include?(viii) -%>
+      <%=          kiii %> <%= viii %>
+<%               end -%>
+<%               # check if this is the last value for this tag -%>
+<%               if aii[-1] == kiii -%>
+<%                 # split opening tag to get closing tag -%>
+<%                 close_tag = scope.function_split([kii, ' ']) -%>
+    </<%=          close_tag[0] %>>
+<%               end -%>
+<%             end -%>
+<%          # layer 2 (cont.) -%>
+<%           elsif vii == true or vii == '' -%>
+    <%=            kii %>
+<%           elsif vii.is_a?(Array) -%>
+<%             vii.each do |viii| -%>
+    <%=          kii %> <%= viii %>
+<%             end -%>
+<%           elsif ![nil, '', :undef].include?(vii) -%>
+    <%=        kii %> <%= vii %>
+<%           end -%>
+<%           # check if this is the last value for this tag -%>
+<%           if ai[-1] == kii -%>
+<%             # split opening tag to get closing tag -%>
+<%             close_tag = scope.function_split([ki, ' ']) -%>
+  </<%=      close_tag[0] %>>
+<%           end -%>
+<%         end -%>
+<%       # layer 1 (cont.) -%>
+<%       elsif vi == true or v == '' -%>
+<%= ind -%><%=      ki %>
+<%       elsif vi.is_a?(Array) -%>
+<%         vi.each do |vii| -%>
+<%= ind -%><%=        ki %> <%= vii %>
+<%         end -%>
+<%       elsif ![nil, '', :undef].include?(vi) -%>
+<%= ind -%><%=      ki %> <%= vi %>
+<%       end -%>
+<%       # check if this is the last value for this tag -%>
+<%       if options_array[-1] == ki and k != 'ROOT' -%>
+<%         # split opening tag to get closing tag -%>
+<%         close_tag = scope.function_split([k, ' ']) -%>
+</<%=      close_tag[0] %>>
+<%       end -%>
+<%     end -%>
+<%   end %>
+<% end -%>
