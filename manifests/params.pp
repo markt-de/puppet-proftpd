@@ -18,7 +18,24 @@ class proftpd::params {
   $service_ensure     = 'running'
 
   case $::osfamily {
-    'Debian', 'RedHat', 'Amazon': {
+    'Debian': {
+      $prefix         = undef
+      $prefix_bin     = '/usr/sbin'
+      $config         = '/etc/proftpd/proftpd.conf'
+      $config_user    = 'root'
+      $config_group   = 'root'
+      $config_mode    = '0644'
+      $base_dir       = '/etc/proftpd'
+      $log_dir        = '/var/log/proftpd'
+      $run_dir        = '/var/run/proftpd'
+      $pidfile        = '/var/run/proftpd.pid'
+      $scoreboardfile = '/var/run/proftpd.scoreboard'
+      $packages       = [ 'proftpd' ]
+      $service_name   = 'proftpd'
+      $user           = 'proftpd'
+      $group          = 'nogroup'
+    }
+    'RedHat': {
       $prefix         = undef
       $prefix_bin     = '/usr/sbin'
       $config         = '/etc/proftpd.conf'
@@ -93,11 +110,12 @@ class proftpd::params {
     'IfModule mod_tls_shmcache.c' => {
       'TLSSessionCache'           => "shm:/file=${run_dir}/sesscache",
     },
-    'Global'           => {
-      'Umask'          => '022',
-      'AllowOverwrite' => 'yes',
+    'Global'              => {
+      'Umask'             => '022',
+      'RequireValidShell' => 'off',
+      'AllowOverwrite'    => 'yes',
       'Limit ALL SITE_CHMOD' => {
-        'AllowAll' => true,
+        'AllowAll'           => true,
       },
     },
   }
