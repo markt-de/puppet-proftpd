@@ -189,7 +189,7 @@ The `proftpd.conf.erb` template... sucks. It suffers from code repetition. Furth
 
 Please use the github issues functionality to report any bugs or requests for new features.
 Feel free to fork and submit pull requests for potential contributions.
-                                                                                                                                                      239,1         Bot
+
 ## Contributors
 
 This module is heavily inspired by and in part based on the following modules:
