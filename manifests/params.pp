@@ -30,7 +30,7 @@ class proftpd::params {
       $run_dir        = '/var/run/proftpd'
       $pidfile        = '/var/run/proftpd.pid'
       $scoreboardfile = '/var/run/proftpd.scoreboard'
-      $packages       = [ 'proftpd' ]
+      $packages       = [ 'proftpd-basic' ]
       $service_name   = 'proftpd'
       $user           = 'proftpd'
       $group          = 'nogroup'
