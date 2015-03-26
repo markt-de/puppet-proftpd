@@ -42,7 +42,7 @@ Loading additional modules is easy too:
       }
     }
 
-It is simple to add or overwrite default options in the configuration root or any (sub) section:
+It is simple to add new options or overwrite the defaults in the configuration root or any (sub) section:
 
     class { 'proftpd':
       options => {
@@ -58,6 +58,21 @@ It is simple to add or overwrite default options in the configuration root or an
 
 NOTE: You don't need to take care for section brackets or closing tags. The module
 will add this automatically.
+
+Enabling anonymous login and customizing it's default options works the same way:
+
+    class { 'proftpd':
+      anonymous_enable => true,
+      options          => {
+        'Anonymous ~ftp'        => {
+          'Directory uploads/*' => {
+            'Limit STOR'        => {
+              'AllowAll'        => true,
+              'DenyAll'         => false,
+            },
+          },
+        },
+      },
 
 You may opt to disable the default configuration and do everything from scratch:
 
@@ -146,13 +161,14 @@ You may want to use the `$options` parameter to overwrite default configuration 
 
 * `sections`: ProFTPD's configuration uses a number of &lt;sections&gt;. You create a new section by specifying a hash, the module's erb template will do the rest for you. This works for special cases like &lt;IfDefine X&gt; too.
 * `ROOT`: To add items to the root of the ProFTPD configuration, use this namespace.
+* `false`: Setting a value to 'false' will remove the item from the configuration.
 
 ### Parameters
 
-* `anonymous_options`: An optional hash containing options to configure ProFTPD for anonymous FTP access.
+* `anonymous_options`: An optional hash containing the default options to configure ProFTPD for anonymous FTP access. Use this to overwrite these defaults.
 * `anonymous_enable`: Set to 'true' to enable loading of the `$anonymous_options` hash.
 * `load_modules`: A hash of optional ProFTPD modules to load.
-* `options`: Specify a hash containing options to either overwrite the default options or configure ProFTPD from scratch.
+* `options`: Specify a hash containing options to either overwrite the default options or configure ProFTPD from scratch. Will be merged with `$default_options` hash (as long as `$default_config` is not set to 'false').
 * `default_options`: A hash containing a set of working default options for ProFTPD. This should make it easy to get a running service and to overwrite a few settings.
 * `config_template`: Specify which erb template to use.
 * `default_config`: Set to 'false' to disable loading of the default configuration. Defaults to 'true'.
