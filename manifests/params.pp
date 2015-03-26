@@ -142,7 +142,7 @@ class proftpd::params {
           'DenyAll'         => true,
         },
         'Limit STOR'        => {
-          'AllowAll'        => true,
+          'DenyAll'         => true,
         },
       },
       'WtmpLog'            => 'off',
