@@ -37,6 +37,8 @@ Include <%= @base_dir %>/modules.conf
       <<%=             kiiii %>>
 <%                   elsif viiii == true or viiii == '' -%>
         <%=              kiiii %>
+<%                   elsif viiii == false -%>
+<%                     # ignore if set to false -%>
 <%                   elsif viiii.is_a?(Array) -%>
 <%                     viiii.each do |viiiii| -%>
         <%=                kiiii %> <%= viiiii %>
@@ -54,6 +56,8 @@ Include <%= @base_dir %>/modules.conf
 <%               # layer 3 (cont.) -%>
 <%               elsif viii == true or viii == '' -%>
       <%=          kiii %>
+<%               elsif viii == false -%>
+<%                 # ignore if set to false -%>
 <%               elsif viii.is_a?(Array) -%>
 <%                 viii.each do |viiii| -%>
       <%=            kiii %> <%= viiii %>
@@ -71,6 +75,8 @@ Include <%= @base_dir %>/modules.conf
 <%          # layer 2 (cont.) -%>
 <%           elsif vii == true or vii == '' -%>
     <%=            kii %>
+<%           elsif vii == false -%>
+<%             # ignore if set to false -%>
 <%           elsif vii.is_a?(Array) -%>
 <%             vii.each do |viii| -%>
     <%=          kii %> <%= viii %>
@@ -88,6 +94,8 @@ Include <%= @base_dir %>/modules.conf
 <%       # layer 1 (cont.) -%>
 <%       elsif vi == true or v == '' -%>
 <%= ind -%><%=      ki %>
+<%       elsif vi == false -%>
+<%         # ignore if set to false -%>
 <%       elsif vi.is_a?(Array) -%>
 <%         vi.each do |vii| -%>
 <%= ind -%><%=        ki %> <%= vii %>
