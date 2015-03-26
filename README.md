@@ -56,8 +56,7 @@ It is simple to add new options or overwrite the defaults in the configuration r
       },
     }
 
-NOTE: You don't need to take care for section brackets or closing tags. The module
-will add this automatically.
+NOTE: You don't need to take care for section brackets or closing tags. The module will add this automatically.
 
 Enabling anonymous login and customizing it's default options works the same way:
 
@@ -85,8 +84,7 @@ You may opt to disable the default configuration and do everything from scratch:
 
 ### Using Hiera
 
-You're encouraged to define your configuration using Hiera, especially if you
-plan to disable the default configuration:
+You're encouraged to define your configuration using Hiera, especially if you plan to disable the default configuration:
 
     proftpd::default_config: false
     proftpd::load_modules:
@@ -203,8 +201,7 @@ The `proftpd.conf.erb` template... sucks. It suffers from code repetition. Furth
 
 ## Development
 
-Please use the github issues functionality to report any bugs or requests for new features.
-Feel free to fork and submit pull requests for potential contributions.
+Please use the github issues functionality to report any bugs or requests for new features. Feel free to fork and submit pull requests for potential contributions.
 
 ## Contributors
 
