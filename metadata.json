@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "author": "Frank Wall",
   "summary": "Puppet module to manage ProFTPD",
-  "license": "2-clause BSD license",
+  "license": "BSD-2-Clause",
   "source": "https://github.com/fraenki/puppet-proftpd",
   "project_page": "https://github.com/fraenki/puppet-proftpd",
   "issues_url": "https://github.com/fraenki/puppet-proftpd/issues",
   "description": "Puppet module to manage ProFTPD on FreeBSD and Linux with very flexible, hiera-friendly configuration",
   "dependencies": [
-    { "name": "puppetlabs/concat", "version_requirement": ">= 1.0.0" },
-    { "name": "puppetlabs/stdlib", "version_requirement": ">= 4.2.0" }
+    { "name": "puppetlabs/concat", "version_requirement": ">= 1.0.0 <2.0.0" },
+    { "name": "puppetlabs/stdlib", "version_requirement": ">= 4.2.0 <5.0.0" }
   ],
   "requirements": [
     { "name": "puppet", "version_requirement": "3.x" },
