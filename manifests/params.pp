@@ -89,12 +89,16 @@ class proftpd::params {
       'Group'              => $group,
       'MaxInstances'       => '20',
       'UseSendfile'        => 'off',
-      'LogFormat'          => 'default  "%h %l %u %t \"%r\" %s %b"',
-      'LogFormat'          => 'auth     "%v [%P] %h %t \"%r\" %s"',
+      'LogFormat'          => [
+                              'default  "%h %l %u %t \"%r\" %s %b"',
+                              'auth     "%v [%P] %h %t \"%r\" %s"',
+                              ],
       'TransferLog'        => "${log_dir}/xferlog",
       'SystemLog'          => "${log_dir}/proftpd.log",
-      'ModuleControlsACLs' => 'insmod,rmmod allow user root',
-      'ModuleControlsACLs' => 'lsmod allow user *',
+      'ModuleControlsACLs' => [
+                              'insmod,rmmod allow user root',
+                              'lsmod allow user *',
+                              ],
       'ControlsEngine'     => 'on',
       'ControlsACLs'       => 'all allow user root',
       'ControlsSocketACL'  => 'allow user *',
@@ -146,8 +150,10 @@ class proftpd::params {
         },
       },
       'WtmpLog'            => 'off',
-      'ExtendedLog'        => "${log_dir}/access.log WRITE,READ default",
-      'ExtendedLog'        => "${log_dir}/auth.log AUTH auth",
+      'ExtendedLog'        => [
+                              "${log_dir}/access.log WRITE,READ default",
+                              "${log_dir}/auth.log AUTH auth",
+                              ],
     },
   }
 

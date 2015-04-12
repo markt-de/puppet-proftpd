@@ -109,11 +109,13 @@ You're encouraged to define your configuration using Hiera, especially if you pl
         Port: '21'
         PassivePorts: '49152 65534'
         TransferLog: 'NONE'
-        LogFormat: 'default "%h %l %u %t \"%r\" %s %b"'
-        LogFormat: 'auth "%t %v [%P] %h \"%r\" %s"'
-        LogFormat: 'access "%h %l %u %t \"%r\" %s %b"'
-        ExtendedLog: '/var/log/proftpd/access.log INFO,DIRS,MISC,READ,WRITE access'
-        ExtendedLog: '/var/log/proftpd/auth.log AUTH auth'
+        LogFormat:
+          - 'default "%h %l %u %t \"%r\" %s %b"'
+          - 'auth "%t %v [%P] %h \"%r\" %s"'
+          - 'access "%h %l %u %t \"%r\" %s %b"'
+        ExtendedLog:
+          - '/var/log/proftpd/access.log INFO,DIRS,MISC,READ,WRITE access'
+          - '/var/log/proftpd/auth.log AUTH auth'
         MaxClients: '20 "Connection limit reached (%m)."'
         MaxInstances: '20'
         MaxClientsPerHost: '15 "Connection limit reached (%m)."'
@@ -160,6 +162,7 @@ You may want to use the `$options` parameter to overwrite default configuration 
 * `sections`: ProFTPD's configuration uses a number of &lt;sections&gt;. You create a new section by specifying a hash, the module's erb template will do the rest for you. This works for special cases like &lt;IfDefine X&gt; too.
 * `ROOT`: To add items to the root of the ProFTPD configuration, use this namespace.
 * `false`: Setting a value to 'false' will remove the item from the configuration.
+* `multiple values`: If you want to specify multiple values for the same configuration item (i.e. `LogFormat` or `ExtendedLog`), you need to specify these values as an array.
 
 ### Parameters
 
