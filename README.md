@@ -16,7 +16,7 @@
 
 ## Overview
 
-fraenki/php is a Puppet module for managing ProFTPD. It allows for very flexible configuration and is hiera-friendly.
+fraenki/proftpd is a Puppet module for managing ProFTPD. It allows for very flexible configuration and is hiera-friendly.
 
 ## Requirements
 
