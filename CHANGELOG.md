@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0
+* Feature: Add hiera lookup for `$::proftpd::options` to merge values from multiple hierarchy levels
+* Contributor: cdenneen
+
 ## 1.1.1
 * Bugfix: Fix `LogFormat` and `ExtendedLog` in default configuration
 
