@@ -22,7 +22,7 @@ class proftpd::config {
     }
     # do not include defaults
     else { $real_options = $hash_options }
-    
+
     # required variables
     $base_dir     = $::proftpd::base_dir
     $load_modules = $::proftpd::load_modules
