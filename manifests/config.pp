@@ -33,6 +33,20 @@ class proftpd::config {
       notify  => Service[$::proftpd::service_name],
     }
 
+    if $real_options[ROOT][AuthUserFile] {
+        file { "${real_options[ROOT][AuthUserFile]}":
+            ensure  => present,
+            mode    => 0600,
+        }
+    }
+
+    if $real_options[ROOT][AuthGroupFile] {
+        file { "${real_options[ROOT][AuthGroupFile]}":
+            ensure  => present,
+            mode    => 0600,
+        }
+    }
+
     file {
       $::proftpd::base_dir:
         ensure => directory,
