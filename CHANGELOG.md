@@ -1,5 +1,9 @@
 # Changelog
 
+## TBD
+* Feature: Create empty AuthUserFile/AuthGroupFile to allow the configtest to succeed
+* Contributor: yarikdot
+
 ## 1.2.0
 * Feature: Add hiera lookup for `$::proftpd::options` to merge values from multiple hierarchy levels
 * Contributor: cdenneen

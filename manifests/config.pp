@@ -27,6 +27,25 @@ class proftpd::config {
     $base_dir     = $::proftpd::base_dir
     $load_modules = $::proftpd::load_modules
 
+    # create AuthUserFile/AuthGroupFile to allow the configtest to succeed
+    # XXX: may be found in server config, <VirtualHost>, <Global>
+    if $real_options['ROOT']['AuthUserFile'] {
+      if !defined(File["${real_options['ROOT']['AuthUserFile']}"]) {
+        file { "${real_options['ROOT']['AuthUserFile']}":
+          ensure => present,
+          mode   => '0600',
+        }
+      }
+    }
+    if $real_options['ROOT']['AuthGroupFile'] {
+      if !defined(File["${real_options['ROOT']['AuthGroupFile']}"]) {
+        file { "${real_options['ROOT']['AuthGroupFile']}":
+          ensure => present,
+          mode   => '0600',
+        }
+      }
+    }
+
     File {
       ensure  => present,
       require => Class['::proftpd::install'],
