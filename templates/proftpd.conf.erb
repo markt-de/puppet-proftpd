@@ -49,7 +49,7 @@ Include <%= @base_dir %>/modules.conf
 <%                   # check if this is the last value for this tag -%>
 <%                   if aiii[-1] == kiiii -%>
 <%                     # split opening tag to get closing tag -%>
-<%                     close_tag = scope.function_split([kiii, ' ']) -%>
+<%                     close_tag = kiii.split(' ') -%>
       </<%=            close_tag[0] %>>
 <%                   end -%>
 <%                 end -%>
@@ -68,7 +68,7 @@ Include <%= @base_dir %>/modules.conf
 <%               # check if this is the last value for this tag -%>
 <%               if aii[-1] == kiii -%>
 <%                 # split opening tag to get closing tag -%>
-<%                 close_tag = scope.function_split([kii, ' ']) -%>
+<%                 close_tag = kii.split(' ') -%>
     </<%=          close_tag[0] %>>
 <%               end -%>
 <%             end -%>
@@ -87,7 +87,7 @@ Include <%= @base_dir %>/modules.conf
 <%           # check if this is the last value for this tag -%>
 <%           if ai[-1] == kii -%>
 <%             # split opening tag to get closing tag -%>
-<%             close_tag = scope.function_split([ki, ' ']) -%>
+<%             close_tag = ki.split(' ') -%>
   </<%=      close_tag[0] %>>
 <%           end -%>
 <%         end -%>
@@ -106,7 +106,7 @@ Include <%= @base_dir %>/modules.conf
 <%       # check if this is the last value for this tag -%>
 <%       if options_array[-1] == ki and k != 'ROOT' -%>
 <%         # split opening tag to get closing tag -%>
-<%         close_tag = scope.function_split([k, ' ']) -%>
+<%         close_tag = k.split(' ') -%>
 </<%=      close_tag[0] %>>
 <%       end -%>
 <%     end -%>
