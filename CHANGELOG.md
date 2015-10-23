@@ -1,8 +1,10 @@
 # Changelog
 
-## TBD
+## 1.3.0
 * Feature: Create empty AuthUserFile/AuthGroupFile to allow the configtest to succeed
-* Contributor: yarikdot
+* Bugfix: Fix ERB template to be ready for Puppet 4
+* Bugfix: Fix syntax errors in non-hiera example configuration
+* Contributors: yarikdot, trlinkin, lmorfitt
 
 ## 1.2.0
 * Feature: Add hiera lookup for `$::proftpd::options` to merge values from multiple hierarchy levels
