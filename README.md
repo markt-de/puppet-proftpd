@@ -46,12 +46,12 @@ It is simple to add new options or overwrite the defaults in the configuration r
 
     class { 'proftpd':
       options => {
-        ROOT  => {
-          ServerName   => 'FTP server',
-          MaxInstances => '10',
+        'ROOT'  => {
+          'ServerName'   => 'FTP server',
+          'MaxInstances' => '10',
         },
         'IfModule mod_vroot.c' => {
-          VRootEngine => 'on',
+          'VRootEngine' => 'on',
         },
       },
     }
