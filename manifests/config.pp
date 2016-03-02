@@ -72,7 +72,7 @@ class proftpd::config {
         ensure       => file,
         mode         => $::proftpd::config_mode,
         content      => template($::proftpd::config_template),
-        validate_cmd => "${::proftpd::prefix_bin}/proftpd -t -c %",
+        validate_cmd => "LD_LIBRARY_PATH=/usr/libexec/proftpd ${::proftpd::prefix_bin}/proftpd -t -c %",
         owner        => $::proftpd::config_user,
         group        => $::proftpd::config_group;
     }
