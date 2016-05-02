@@ -5,6 +5,8 @@ class proftpd::config {
   # Should we manage the configuration at all?
   if ( $::proftpd::manage_config_file == true ) {
 
+    $modules_config = "${::proftpd::base_dir}/modules.conf"
+
     # check if anonymous access should be enabled
     if ( $::proftpd::anonymous_enable == true ) {
       $real_defaults = deep_merge($::proftpd::default_options,
@@ -29,6 +31,7 @@ class proftpd::config {
 
     # create AuthUserFile/AuthGroupFile to allow the configtest to succeed
     if $real_options['ROOT']['AuthUserFile'] {
+      $authuser_require = File["${real_options['ROOT']['AuthUserFile']}"]
       if !defined(File["${real_options['ROOT']['AuthUserFile']}"]) {
         file { "${real_options['ROOT']['AuthUserFile']}":
           ensure => present,
@@ -37,6 +40,7 @@ class proftpd::config {
         }
       }
     } elsif $real_options['Global']['AuthUserFile'] {
+      $authuser_require = File["${real_options['Global']['AuthUserFile']}"]
       if !defined(File["${real_options['Global']['AuthUserFile']}"]) {
         file { "${real_options['Global']['AuthUserFile']}":
           ensure => present,
@@ -46,6 +50,7 @@ class proftpd::config {
       }
     }
     if $real_options['ROOT']['AuthGroupFile'] {
+      $authgroup_require = File["${real_options['ROOT']['AuthGroupFile']}"]
       if !defined(File["${real_options['ROOT']['AuthGroupFile']}"]) {
         file { "${real_options['ROOT']['AuthGroupFile']}":
           ensure => present,
@@ -54,6 +59,7 @@ class proftpd::config {
         }
       }
     } elsif $real_options['Global']['AuthGroupFile'] {
+      $authgroup_require = File["${real_options['Global']['AuthGroupFile']}"]
       if !defined(File["${real_options['Global']['AuthGroupFile']}"]) {
         file { "${real_options['Global']['AuthGroupFile']}":
           ensure => present,
@@ -62,6 +68,14 @@ class proftpd::config {
         }
       }
     }
+    if $authuser_require and $authgroup_require {
+      $config_require = [File[$modules_config], $authuser_require,
+                        $authgroup_require]
+    } elsif $authuser_require {
+      $config_require = [File[$modules_config], $authuser_require]
+    } elsif $authgroup_require {
+      $config_require = [File[$modules_config], $authgroup_require]
+    } else { $config_require = File[$modules_config] }
 
     File {
       ensure  => present,
@@ -92,10 +106,10 @@ class proftpd::config {
         validate_cmd => "${::proftpd::prefix_bin}/proftpd -t -c %",
         owner        => $::proftpd::config_user,
         group        => $::proftpd::config_group,
-        require      => File["${::proftpd::base_dir}/modules.conf"];
+        require      => $config_require;
     }
 
-    concat { "${::proftpd::base_dir}/modules.conf":
+    concat { $modules_config:
       owner  => $::proftpd::config_user,
       group  => $::proftpd::config_group,
       # modules may be required for validate_cmd to succeed
