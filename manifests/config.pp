@@ -30,7 +30,7 @@ class proftpd::config {
     $load_modules = $::proftpd::load_modules
 
     # create AuthUserFile/AuthGroupFile to allow the configtest to succeed
-    if $real_options['ROOT']['AuthUserFile'] {
+    if $real_options['ROOT'] and $real_options['ROOT']['AuthUserFile'] {
       $authuser_require = File["${real_options['ROOT']['AuthUserFile']}"]
       if !defined(File["${real_options['ROOT']['AuthUserFile']}"]) {
         file { "${real_options['ROOT']['AuthUserFile']}":
@@ -39,7 +39,8 @@ class proftpd::config {
           before => File[$::proftpd::config],
         }
       }
-    } elsif $real_options['Global']['AuthUserFile'] {
+    } elsif $real_options['Global'] and
+        $real_options['Global']['AuthUserFile'] {
       $authuser_require = File["${real_options['Global']['AuthUserFile']}"]
       if !defined(File["${real_options['Global']['AuthUserFile']}"]) {
         file { "${real_options['Global']['AuthUserFile']}":
@@ -49,7 +50,7 @@ class proftpd::config {
         }
       }
     }
-    if $real_options['ROOT']['AuthGroupFile'] {
+    if $real_options['ROOT'] and $real_options['ROOT']['AuthGroupFile'] {
       $authgroup_require = File["${real_options['ROOT']['AuthGroupFile']}"]
       if !defined(File["${real_options['ROOT']['AuthGroupFile']}"]) {
         file { "${real_options['ROOT']['AuthGroupFile']}":
@@ -58,7 +59,8 @@ class proftpd::config {
           before => File[$::proftpd::config],
         }
       }
-    } elsif $real_options['Global']['AuthGroupFile'] {
+    } elsif $real_options['Global'] and
+        $real_options['Global']['AuthGroupFile'] {
       $authgroup_require = File["${real_options['Global']['AuthGroupFile']}"]
       if !defined(File["${real_options['Global']['AuthGroupFile']}"]) {
         file { "${real_options['Global']['AuthGroupFile']}":
