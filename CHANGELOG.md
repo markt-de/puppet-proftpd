@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.4.1
+* Bugfix: Do not fail if an expected config section does not exist
+
 ## 1.4.0
 * Bugfix: Several fixes to make the validate_cmd more robust
 * Feature: Add parameter for ordering modules
