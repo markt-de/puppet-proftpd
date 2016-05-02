@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.0
+* Bugfix: Several fixes to make the validate_cmd more robust
+* Feature: Add parameter for ordering modules
+* Contributor: cdenneen
+
 ## 1.3.0
 * Feature: Create empty AuthUserFile/AuthGroupFile to allow the configtest to succeed
 * Bugfix: Fix ERB template to be ready for Puppet 4
