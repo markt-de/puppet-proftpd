@@ -28,12 +28,20 @@ class proftpd::config {
     $load_modules = $::proftpd::load_modules
 
     # create AuthUserFile/AuthGroupFile to allow the configtest to succeed
-    # XXX: may be found in server config, <VirtualHost>, <Global>
     if $real_options['ROOT']['AuthUserFile'] {
       if !defined(File["${real_options['ROOT']['AuthUserFile']}"]) {
         file { "${real_options['ROOT']['AuthUserFile']}":
           ensure => present,
           mode   => '0600',
+          before => File[$::proftpd::config],
+        }
+      }
+    } elsif $real_options['Global']['AuthUserFile'] {
+      if !defined(File["${real_options['Global']['AuthUserFile']}"]) {
+        file { "${real_options['Global']['AuthUserFile']}":
+          ensure => present,
+          mode   => '0600',
+          before => File[$::proftpd::config],
         }
       }
     }
@@ -42,6 +50,15 @@ class proftpd::config {
         file { "${real_options['ROOT']['AuthGroupFile']}":
           ensure => present,
           mode   => '0600',
+          before => File[$::proftpd::config],
+        }
+      }
+    } elsif $real_options['Global']['AuthGroupFile'] {
+      if !defined(File["${real_options['Global']['AuthGroupFile']}"]) {
+        file { "${real_options['Global']['AuthGroupFile']}":
+          ensure => present,
+          mode   => '0600',
+          before => File[$::proftpd::config],
         }
       }
     }
