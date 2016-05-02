@@ -87,9 +87,19 @@ You may opt to disable the default configuration and do everything from scratch:
 You're encouraged to define your configuration using Hiera, especially if you plan to disable the default configuration:
 
     proftpd::default_config: false
+    # load modules in a specific order if necessary
     proftpd::load_modules:
+      sql:
+        order: 1
+      sql_mysql:
+        order: 2
+      quotatab:
+        order: 3
+      quotatab_sql:
+        order: 4
+      rewrite:
+        order: 5
       ban: {}
-      sql: {}
       tls: {}
 
     proftpd::options:
@@ -168,7 +178,7 @@ You may want to use the `$options` parameter to overwrite default configuration 
 
 * `anonymous_options`: An optional hash containing the default options to configure ProFTPD for anonymous FTP access. Use this to overwrite these defaults.
 * `anonymous_enable`: Set to 'true' to enable loading of the `$anonymous_options` hash.
-* `load_modules`: A hash of optional ProFTPD modules to load.
+* `load_modules`: A hash of optional ProFTPD modules to load. It is possible to load modules in a specific order by using the `order` attribute.
 * `options`: Specify a hash containing options to either overwrite the default options or configure ProFTPD from scratch. Will be merged with `$default_options` hash (as long as `$default_config` is not set to 'false').
 * `default_options`: A hash containing a set of working default options for ProFTPD. This should make it easy to get a running service and to overwrite a few settings.
 * `config_template`: Specify which erb template to use.
