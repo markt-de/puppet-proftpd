@@ -74,7 +74,7 @@ class proftpd::config {
         content      => template($::proftpd::config_template),
         validate_cmd => "${::proftpd::prefix_bin}/proftpd -t -c %",
         owner        => $::proftpd::config_user,
-        group        => $::proftpd::config_group
+        group        => $::proftpd::config_group,
         require      => File["${::proftpd::base_dir}/modules.conf"];
     }
 
