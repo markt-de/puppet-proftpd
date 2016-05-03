@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.4.2
+* Bugfix: Fix puppet-lint issues
+
 ## 1.4.1
 * Bugfix: Do not fail if an expected config section does not exist
 
