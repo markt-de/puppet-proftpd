@@ -31,9 +31,9 @@ class proftpd::config {
 
     # create AuthUserFile/AuthGroupFile to allow the configtest to succeed
     if $real_options['ROOT'] and $real_options['ROOT']['AuthUserFile'] {
-      $authuser_require = File["${real_options['ROOT']['AuthUserFile']}"]
-      if !defined(File["${real_options['ROOT']['AuthUserFile']}"]) {
-        file { "${real_options['ROOT']['AuthUserFile']}":
+      $authuser_require = File[$real_options['ROOT']['AuthUserFile']]
+      if !defined(File[$real_options['ROOT']['AuthUserFile']]) {
+        file { $real_options['ROOT']['AuthUserFile']:
           ensure => present,
           mode   => '0600',
           before => File[$::proftpd::config],
@@ -41,9 +41,9 @@ class proftpd::config {
       }
     } elsif $real_options['Global'] and
         $real_options['Global']['AuthUserFile'] {
-      $authuser_require = File["${real_options['Global']['AuthUserFile']}"]
-      if !defined(File["${real_options['Global']['AuthUserFile']}"]) {
-        file { "${real_options['Global']['AuthUserFile']}":
+      $authuser_require = File[$real_options['Global']['AuthUserFile']]
+      if !defined(File[$real_options['Global']['AuthUserFile']]) {
+        file { $real_options['Global']['AuthUserFile']:
           ensure => present,
           mode   => '0600',
           before => File[$::proftpd::config],
@@ -51,9 +51,9 @@ class proftpd::config {
       }
     }
     if $real_options['ROOT'] and $real_options['ROOT']['AuthGroupFile'] {
-      $authgroup_require = File["${real_options['ROOT']['AuthGroupFile']}"]
-      if !defined(File["${real_options['ROOT']['AuthGroupFile']}"]) {
-        file { "${real_options['ROOT']['AuthGroupFile']}":
+      $authgroup_require = File[$real_options['ROOT']['AuthGroupFile']]
+      if !defined(File[$real_options['ROOT']['AuthGroupFile']]) {
+        file { $real_options['ROOT']['AuthGroupFile']:
           ensure => present,
           mode   => '0600',
           before => File[$::proftpd::config],
@@ -61,9 +61,9 @@ class proftpd::config {
       }
     } elsif $real_options['Global'] and
         $real_options['Global']['AuthGroupFile'] {
-      $authgroup_require = File["${real_options['Global']['AuthGroupFile']}"]
-      if !defined(File["${real_options['Global']['AuthGroupFile']}"]) {
-        file { "${real_options['Global']['AuthGroupFile']}":
+      $authgroup_require = File[$real_options['Global']['AuthGroupFile']]
+      if !defined(File[$real_options['Global']['AuthGroupFile']]) {
+        file { $real_options['Global']['AuthGroupFile']:
           ensure => present,
           mode   => '0600',
           before => File[$::proftpd::config],
