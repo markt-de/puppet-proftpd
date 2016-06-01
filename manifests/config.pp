@@ -119,7 +119,6 @@ class proftpd::config {
     }
 
     concat::fragment { 'proftp_modules_header':
-      ensure  => present,
       target  => "${::proftpd::base_dir}/modules.conf",
       content => "# File is managed by Puppet\n",
       order   => '01',
