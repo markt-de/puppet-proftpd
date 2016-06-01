@@ -71,13 +71,13 @@ class proftpd::config {
       }
     }
     if $authuser_require and $authgroup_require {
-      $config_require = [File[$modules_config], $authuser_require,
+      $config_require = [Concat[$modules_config], $authuser_require,
                         $authgroup_require]
     } elsif $authuser_require {
-      $config_require = [File[$modules_config], $authuser_require]
+      $config_require = [Concat[$modules_config], $authuser_require]
     } elsif $authgroup_require {
-      $config_require = [File[$modules_config], $authgroup_require]
-    } else { $config_require = File[$modules_config] }
+      $config_require = [Concat[$modules_config], $authgroup_require]
+    } else { $config_require = Concat[$modules_config] }
 
     File {
       ensure  => present,
