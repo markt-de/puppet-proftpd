@@ -20,7 +20,7 @@ fraenki/proftpd is a Puppet module for managing ProFTPD. It allows for very flex
 
 ## Requirements
 
-* Puppet 3.x
+* Puppet 3.x or 4.x
 * [puppetlabs/concat](https://github.com/puppetlabs/puppetlabs-concat)
 * [puppetlabs/stdlib](https://github.com/puppetlabs/puppetlabs-stdlib)
 
