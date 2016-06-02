@@ -1,5 +1,9 @@
 # Changelog
 
+## FUTURE
+* Bugfix: Fix requirements and silence a warning
+* Contributor: franzs
+
 ## 1.4.2
 * Bugfix: Fix puppet-lint issues
 
