@@ -204,6 +204,10 @@ You may want to use the `$options` parameter to overwrite default configuration 
 
 ## Limitations
 
+### No Ruby 1.8 support
+
+Some users reported issues when running this module on Ruby 1.8. The config file may change on every puppet run. Please upgrade to Ruby 1.9 to fix this issue. (See [PUP-1755](https://tickets.puppetlabs.com/browse/PUP-1755) for more details and a description of the root cause.)
+
 ### OS Compatibility
 
 This module was tested on FreeBSD, CentOS and Debian. Please open a new issue if your operating system is not supported yet, and provide information about problems or missing features.
