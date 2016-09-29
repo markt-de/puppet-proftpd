@@ -1,7 +1,8 @@
 # Changelog
 
-## FUTURE
+## 1.4.3
 * Bugfix: Fix requirements and silence a warning
+* Documentation: Known issues when running on Ruby 1.8
 * Contributor: franzs
 
 ## 1.4.2
