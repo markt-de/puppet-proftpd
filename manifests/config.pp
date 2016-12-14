@@ -82,7 +82,6 @@ class proftpd::config {
     File {
       ensure  => present,
       require => Class['::proftpd::install'],
-      notify  => Service[$::proftpd::service_name],
     }
 
     file {
@@ -108,7 +107,8 @@ class proftpd::config {
         validate_cmd => "${::proftpd::prefix_bin}/proftpd -t -c %",
         owner        => $::proftpd::config_user,
         group        => $::proftpd::config_group,
-        require      => $config_require;
+        require      => $config_require,
+        notify       => Class[::proftpd::service];
     }
 
     concat { $modules_config:
@@ -116,6 +116,7 @@ class proftpd::config {
       group  => $::proftpd::config_group,
       # modules may be required for validate_cmd to succeed
       before => File[$::proftpd::config],
+      notify => Class[::proftpd::service],
     }
 
     concat::fragment { 'proftp_modules_header':
