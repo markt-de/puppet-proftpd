@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.4
+* Bugfix: Fix service notifies for config changes
+* Contributor: rendhalver
+
 ## 1.4.3
 * Bugfix: Fix requirements and silence a warning
 * Documentation: Known issues when running on Ruby 1.8

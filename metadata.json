@@ -1,6 +1,6 @@
 {
   "name": "fraenki-proftpd",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "author": "Frank Wall",
   "summary": "Puppet module to manage ProFTPD",
   "license": "BSD-2-Clause",
