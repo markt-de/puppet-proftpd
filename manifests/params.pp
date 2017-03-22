@@ -5,17 +5,19 @@
 #
 class proftpd::params {
   # global module configuration
-  $anonymous_enable   = false
-  $config_template    = "${module_name}/proftpd.conf.erb"
-  $default_config     = true
-  $load_modules       = {}
-  $manage_config_file = true
-  $options            = {}
-  $package_ensure     = 'present'
-  $package_manage     = true
-  $service_manage     = true
-  $service_enable     = true
-  $service_ensure     = 'running'
+  $anonymous_enable     = false
+  $config_template      = "${module_name}/proftpd.conf.erb"
+  $default_config       = true
+  $load_modules         = {}
+  $manage_config_file   = true
+  $options              = {}
+  $package_ensure       = 'present'
+  $package_manage       = true
+  $service_manage       = true
+  $service_enable       = true
+  $service_ensure       = 'running'
+  $authuserfile_source  = undef
+  $authgroupfile_source = undef
 
   case $::osfamily {
     'Debian': {

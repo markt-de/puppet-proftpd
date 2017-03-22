@@ -35,6 +35,9 @@ class proftpd::config {
       if !defined(File[$real_options['ROOT']['AuthUserFile']]) {
         file { $real_options['ROOT']['AuthUserFile']:
           ensure => present,
+          source => $::proftpd::authuserfile_source,
+          owner  => $::proftpd::user,
+          group  => $::proftpd::group,
           mode   => '0600',
           before => File[$::proftpd::config],
         }
@@ -45,6 +48,9 @@ class proftpd::config {
       if !defined(File[$real_options['Global']['AuthUserFile']]) {
         file { $real_options['Global']['AuthUserFile']:
           ensure => present,
+          source => $::proftpd::authuserfile_source,
+          owner  => $::proftpd::user,
+          group  => $::proftpd::group,
           mode   => '0600',
           before => File[$::proftpd::config],
         }
@@ -55,6 +61,9 @@ class proftpd::config {
       if !defined(File[$real_options['ROOT']['AuthGroupFile']]) {
         file { $real_options['ROOT']['AuthGroupFile']:
           ensure => present,
+          source => $::proftpd::authgroupfile_source,
+          owner  => $::proftpd::user,
+          group  => $::proftpd::group,
           mode   => '0600',
           before => File[$::proftpd::config],
         }
@@ -65,6 +74,9 @@ class proftpd::config {
       if !defined(File[$real_options['Global']['AuthGroupFile']]) {
         file { $real_options['Global']['AuthGroupFile']:
           ensure => present,
+          source => $::proftpd::authgroupfile_source,
+          owner  => $::proftpd::user,
+          group  => $::proftpd::group,
           mode   => '0600',
           before => File[$::proftpd::config],
         }

@@ -201,6 +201,8 @@ You may want to use the `$options` parameter to overwrite default configuration 
 * `scoreboardfile`: Path and name of the ScoreboardFile for the ProFTPD service.
 * `user`: Set the user under which the server will run.
 * `group`: Set the group under which the server will run.
+* `authuserfile_source`: Inject the `AuthUserFile` by defining a Puppet source (e.g. `puppet:///modules/mymodule/ftpd.passwd`)
+* `authgroupfile_source`: Inject the `AuthGroupFile` by defining a Puppet source (e.g. `puppet:///modules/mymodule/ftpd.group`)
 
 ## Limitations
 
