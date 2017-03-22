@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.5
+* Feature: Allow injection of AuthUserFile and AuthGroupFile
+* Bugfix: Fix permissions of AuthUserFile and AuthGroupFile
+* Contributor: adepretis
+
 ## 1.4.4
 * Bugfix: Fix service notifies for config changes
 * Contributor: rendhalver
