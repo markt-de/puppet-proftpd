@@ -44,6 +44,11 @@ class proftpd::config {
       }
     } elsif $real_options['Global'] and
         $real_options['Global']['AuthUserFile'] {
+
+      # get the first argument and only use that for creating the file (don't use spaces in filename)
+      $__AuthUserFileParts = split($real_options['Global']['AuthUserFile'], ' ')
+      $__AuthUserFile = $__AuthUserFileParts[0]
+
       $authuser_require = File[$real_options['Global']['AuthUserFile']]
       if !defined(File[$real_options['Global']['AuthUserFile']]) {
         file { $real_options['Global']['AuthUserFile']:
@@ -57,9 +62,13 @@ class proftpd::config {
       }
     }
     if $real_options['ROOT'] and $real_options['ROOT']['AuthGroupFile'] {
-      $authgroup_require = File[$real_options['ROOT']['AuthGroupFile']]
-      if !defined(File[$real_options['ROOT']['AuthGroupFile']]) {
-        file { $real_options['ROOT']['AuthGroupFile']:
+      # get the first argument and only use that for creating the file (don't use spaces in filename)
+      $__AuthGroupFileParts = split($real_options['Global']['AuthGroupFile'], ' ')
+      $__AuthGroupFile = $__AuthUserFileParts[0]
+
+      $authgroup_require = File[$__AuthGroupFile]
+      if !defined(File[$__AuthGroupFile]) {
+        file { $__AuthGroupFile:
           ensure => present,
           source => $::proftpd::authgroupfile_source,
           owner  => $::proftpd::user,
