@@ -44,6 +44,11 @@ class proftpd::config {
       }
     } elsif $real_options['Global'] and
         $real_options['Global']['AuthUserFile'] {
+
+      # get the first argument and only use that for creating the file (don't use spaces in filename)
+      $__AuthUserFileParts = split($real_options['Global']['AuthUserFile'], ' ')
+      $__AuthUserFile = $__AuthUserFileParts[0]
+
       $authuser_require = File[$real_options['Global']['AuthUserFile']]
       if !defined(File[$real_options['Global']['AuthUserFile']]) {
         file { $real_options['Global']['AuthUserFile']:
