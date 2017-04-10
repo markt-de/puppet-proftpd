@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.6
+* Feature: Allow additional arguments to AuthUserFile and AuthGroupFile
+* Contributor: derkgort
+
 ## 1.4.5
 * Feature: Allow injection of AuthUserFile and AuthGroupFile
 * Bugfix: Fix permissions of AuthUserFile and AuthGroupFile
