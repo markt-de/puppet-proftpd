@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.7
+* Bugfix: Fix for AuthUserFile with additional arguments
+* Contributor: derkgort
+
 ## 1.4.6
 * Feature: Allow additional arguments to AuthUserFile and AuthGroupFile
 * Contributor: derkgort
