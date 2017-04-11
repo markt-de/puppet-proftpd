@@ -49,9 +49,9 @@ class proftpd::config {
       $__AuthUserFileParts = split($real_options['Global']['AuthUserFile'], ' ')
       $__AuthUserFile = $__AuthUserFileParts[0]
 
-      $authuser_require = File[$real_options['Global']['AuthUserFile']]
-      if !defined(File[$real_options['Global']['AuthUserFile']]) {
-        file { $real_options['Global']['AuthUserFile']:
+      $authuser_require = File[$__AuthUserFile]
+      if !defined(File[$__AuthUserFile]) {
+        file { $__AuthUserFile:
           ensure => present,
           source => $::proftpd::authuserfile_source,
           owner  => $::proftpd::user,
