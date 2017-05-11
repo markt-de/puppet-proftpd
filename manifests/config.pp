@@ -147,5 +147,16 @@ class proftpd::config {
     }
 
   }
+  if $::proftpd::manage_ftpasswd_file {
+    concat { $::proftpd::ftpasswd_file :
+      mode  => $::proftpd::config_mode,
+      owner => $::proftpd::user,
+      group => $::proftpd::group,
+    }
+    concat::fragment { '01-ftpasswd_file-header':
+      target  => $::proftpd::ftpasswd_file,
+      content => "### Managed by Puppet - Changes will be lost\n",
+    }
+  }
 
 }

@@ -10,6 +10,7 @@ class proftpd::params {
   $default_config       = true
   $load_modules         = {}
   $manage_config_file   = true
+  $manage_ftpasswd_file = false
   $options              = {}
   $package_ensure       = 'present'
   $package_manage       = true
@@ -32,6 +33,7 @@ class proftpd::params {
       $run_dir        = '/var/run/proftpd'
       $pidfile        = '/var/run/proftpd.pid'
       $scoreboardfile = '/var/run/proftpd.scoreboard'
+      $ftpasswd_file  = "${base_dir}/ftpd.passwd"
       $packages       = [ 'proftpd-basic' ]
       $service_name   = 'proftpd'
       $user           = 'proftpd'
@@ -49,6 +51,7 @@ class proftpd::params {
       $run_dir        = '/var/run/proftpd'
       $pidfile        = '/var/run/proftpd.pid'
       $scoreboardfile = '/var/run/proftpd.scoreboard'
+      $ftpasswd_file  = "${base_dir}/ftpd.passwd"
       $packages       = [ 'proftpd' ]
       $service_name   = 'proftpd'
       $user           = 'nobody'
@@ -66,6 +69,7 @@ class proftpd::params {
       $run_dir        = '/var/run/proftpd'
       $pidfile        = '/var/run/proftpd.pid'
       $scoreboardfile = '/var/run/proftpd.scoreboard'
+      $ftpasswd_file  = "${base_dir}/ftpd.passwd"
       $packages       = [ 'ftp/proftpd' ]
       $service_name   = 'proftpd'
       $user           = 'nobody'

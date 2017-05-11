@@ -5,6 +5,7 @@ class proftpd (
   $config_template      = $::proftpd::params::config_template,
   $default_config       = $::proftpd::params::default_config,
   $manage_config_file   = $::proftpd::params::manage_config_file,
+  $manage_ftpasswd_file = $::proftpd::params::manage_ftpasswd_file,
   $package_ensure       = $::proftpd::params::package_ensure,
   $package_manage       = $::proftpd::params::package_manage,
   $service_manage       = $::proftpd::params::service_manage,
@@ -23,6 +24,7 @@ class proftpd (
   $group                = $::proftpd::params::group,
   $pidfile              = $::proftpd::params::pidfile,
   $scoreboardfile       = $::proftpd::params::scoreboardfile,
+  $ftpasswd_file        = $::proftpd::params::ftpasswd_file,
   # proftpd configuration
   $anonymous_options    = $::proftpd::params::anonymous_options,
   $anonymous_enable     = $::proftpd::params::anonymous_enable,
