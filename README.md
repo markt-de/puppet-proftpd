@@ -162,6 +162,36 @@ You're encouraged to define your configuration using Hiera, especially if you pl
         TimeoutNoTransfer: '1800'
       'Directory /':
         AllowOverwrite: 'on'
+      'VirtualHost 127.0.1.1':
+        ServerName: '"FTP Server 1"'
+        PassivePorts: '60000 65534'
+      'IfModule mod_rewrite.c':
+        RewriteEngine: 'on'
+        RewriteLog: '/var/log/proftpd/rewrite.log'
+        RewriteMap:
+          - |
+            replace int:replaceall
+                RewriteCondition        %m ^(STOR)$
+                RewriteRule             ^(.*)$  "${replace:/$1/ /_}"
+          - |
+            replace int:replaceall
+                RewriteCondition        %m ^(STOR)$
+                RewriteRule             ^(.*)$  "${replace:/$1/\?/_}"
+          - |
+            replace int:replaceall
+                RewriteCondition        %m ^(STOR)$
+                RewriteRule             ^(.*)$  "${replace:/$1/Ü/UE}"
+      'Directory /mnt/exchange/user1/*':
+        RewriteCondition:
+          - |-
+            '%f "^[[:cntrl:] ]+"
+                RewriteRule "^[[:cntrl:] ]+([^[:cntrl:]]+)" $1'
+          - |-
+            '%f "[[:cntrl:] ]+$"
+                RewriteRule "([^[:cntrl:]]+)[[:cntrl:] ]+$" $1'
+          - |-
+            '%f "[[:cntrl:]]"
+                RewriteRule "([^[:cntrl:]]+)[[:cntrl:]]*([^[:cntrl:]]*)[[:cntrl:]]*([^[:cntrl:]]*)" $1$2$3'  
 
 ## Reference
 
