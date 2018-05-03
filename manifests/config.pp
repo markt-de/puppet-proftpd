@@ -63,8 +63,8 @@ class proftpd::config {
     }
     if $real_options['ROOT'] and $real_options['ROOT']['AuthGroupFile'] {
       # get the first argument and only use that for creating the file (don't use spaces in filename)
-      $__AuthGroupFileParts = split($real_options['Global']['AuthGroupFile'], ' ')
-      $__AuthGroupFile = $__AuthUserFileParts[0]
+      $__AuthGroupFileParts = split($real_options['ROOT']['AuthGroupFile'], ' ')
+      $__AuthGroupFile = $__AuthGroupFileParts[0]
 
       $authgroup_require = File[$__AuthGroupFile]
       if !defined(File[$__AuthGroupFile]) {
