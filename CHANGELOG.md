@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.8
+* Breaking: Drop Puppet 3.x support
+* Feature: Allow to manage an ftpasswd file using resource declaration
+* Bugfix: Remove deprecated concat::fragment parameter
+* Bugfix: Fix AuthGroupFile support
+* Documentation: Add example for using yaml blocks with multiple hash keys
+* Contributors: cedef, crispygoth, AlessandroLorenzi, bc-bjoern
+
 ## 1.4.7
 * Bugfix: Fix for AuthUserFile with additional arguments
 * Contributor: derkgort
