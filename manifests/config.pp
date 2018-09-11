@@ -60,6 +60,8 @@ class proftpd::config {
           before => File[$::proftpd::config],
         }
       }
+    } else {
+      $authuser_require = false
     }
     if $real_options['ROOT'] and $real_options['ROOT']['AuthGroupFile'] {
       # get the first argument and only use that for creating the file (don't use spaces in filename)
@@ -90,6 +92,8 @@ class proftpd::config {
           before => File[$::proftpd::config],
         }
       }
+    } else {
+      $authgroup_require = false
     }
     if $authuser_require and $authgroup_require {
       $config_require = [Concat[$modules_config], $authuser_require,
