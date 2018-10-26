@@ -47,12 +47,11 @@ class proftpd::config {
         $real_options['Global']['AuthUserFile'] {
 
       # get the first argument and only use that for creating the file (don't use spaces in filename)
-      $__AuthUserFileParts = split($real_options['Global']['AuthUserFile'], ' ')
-      $__AuthUserFile = $__AuthUserFileParts[0]
+      $authuserfile = split($real_options['Global']['AuthUserFile'], ' ')[0]
 
-      $authuser_require = File[$__AuthUserFile]
-      if !defined(File[$__AuthUserFile]) {
-        file { $__AuthUserFile:
+      $authuser_require = File[$authuserfile]
+      if !defined(File[$authuserfile]) {
+        file { $authuserfile:
           ensure => present,
           source => $proftpd::authuserfile_source,
           owner  => $proftpd::user,
@@ -66,12 +65,11 @@ class proftpd::config {
     }
     if $real_options['ROOT'] and $real_options['ROOT']['AuthGroupFile'] {
       # get the first argument and only use that for creating the file (don't use spaces in filename)
-      $__AuthGroupFileParts = split($real_options['ROOT']['AuthGroupFile'], ' ')
-      $__AuthGroupFile = $__AuthGroupFileParts[0]
+      $authgroupfile = split($real_options['ROOT']['AuthGroupFile'], ' ')[0]
 
-      $authgroup_require = File[$__AuthGroupFile]
-      if !defined(File[$__AuthGroupFile]) {
-        file { $__AuthGroupFile:
+      $authgroup_require = File[$authgroupfile]
+      if !defined(File[$authgroupfile]) {
+        file { $authgroupfile:
           ensure => present,
           source => $proftpd::authgroupfile_source,
           owner  => $proftpd::user,
@@ -163,5 +161,4 @@ class proftpd::config {
       content => "### Managed by Puppet - Changes will be lost\n",
     }
   }
-
 }

@@ -1,3 +1,5 @@
+# == Define: proftpd::ftpasswd_user
+#
 define proftpd::ftpasswd_user(
     $hashed_passwd,
     $uid,
