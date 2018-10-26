@@ -3,12 +3,12 @@
 class proftpd::config {
 
   # Should we manage the configuration at all?
-  if ( $proftpd::manage_config_file == true ) {
+  if $proftpd::manage_config_file {
 
     $modules_config = "${proftpd::base_dir}/modules.conf"
 
     # check if anonymous access should be enabled
-    if ( $proftpd::anonymous_enable == true ) {
+    if $proftpd::anonymous_enable {
       $real_defaults = deep_merge($proftpd::default_options,
                                   $proftpd::anonymous_options)
 
@@ -19,7 +19,7 @@ class proftpd::config {
     # check if defaults should be included
     # re-hash due to hiera 1.x known limitation
     $hash_options = hiera_hash('proftpd::options',$proftpd::options)
-    if ( $proftpd::default_config == true ) {
+    if $proftpd::default_config {
       $real_options = deep_merge($real_defaults, $hash_options)
     }
     # do not include defaults
