@@ -13,7 +13,6 @@ group :test do
   gem 'simplecov', '>= 0.11.0'
   gem 'simplecov-console'
 
-  gem "puppet-lint-absolute_classname-check"
   gem "puppet-lint-classes_and_types_beginning_with_digits-check"
   gem "puppet-lint-leading_zero-check"
   gem 'puppet-lint-resource_reference_syntax'

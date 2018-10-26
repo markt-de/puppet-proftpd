@@ -3,31 +3,31 @@
 class proftpd::config {
 
   # Should we manage the configuration at all?
-  if ( $::proftpd::manage_config_file == true ) {
+  if ( $proftpd::manage_config_file == true ) {
 
-    $modules_config = "${::proftpd::base_dir}/modules.conf"
+    $modules_config = "${proftpd::base_dir}/modules.conf"
 
     # check if anonymous access should be enabled
-    if ( $::proftpd::anonymous_enable == true ) {
-      $real_defaults = deep_merge($::proftpd::default_options,
-                                  $::proftpd::anonymous_options)
+    if ( $proftpd::anonymous_enable == true ) {
+      $real_defaults = deep_merge($proftpd::default_options,
+                                  $proftpd::anonymous_options)
 
     }
     # do not include options for anonymous access
-    else { $real_defaults = $::proftpd::default_options }
+    else { $real_defaults = $proftpd::default_options }
 
     # check if defaults should be included
     # re-hash due to hiera 1.x known limitation
-    $hash_options = hiera_hash('proftpd::options',$::proftpd::options)
-    if ( $::proftpd::default_config == true ) {
+    $hash_options = hiera_hash('proftpd::options',$proftpd::options)
+    if ( $proftpd::default_config == true ) {
       $real_options = deep_merge($real_defaults, $hash_options)
     }
     # do not include defaults
     else { $real_options = $hash_options }
 
     # required variables
-    $base_dir     = $::proftpd::base_dir
-    $load_modules = $::proftpd::load_modules
+    $base_dir     = $proftpd::base_dir
+    $load_modules = $proftpd::load_modules
 
     # create AuthUserFile/AuthGroupFile to allow the configtest to succeed
     if $real_options['ROOT'] and $real_options['ROOT']['AuthUserFile'] {
@@ -35,11 +35,11 @@ class proftpd::config {
       if !defined(File[$real_options['ROOT']['AuthUserFile']]) {
         file { $real_options['ROOT']['AuthUserFile']:
           ensure => present,
-          source => $::proftpd::authuserfile_source,
-          owner  => $::proftpd::user,
-          group  => $::proftpd::group,
+          source => $proftpd::authuserfile_source,
+          owner  => $proftpd::user,
+          group  => $proftpd::group,
           mode   => '0600',
-          before => File[$::proftpd::config],
+          before => File[$proftpd::config],
         }
       }
     } elsif $real_options['Global'] and
@@ -53,11 +53,11 @@ class proftpd::config {
       if !defined(File[$__AuthUserFile]) {
         file { $__AuthUserFile:
           ensure => present,
-          source => $::proftpd::authuserfile_source,
-          owner  => $::proftpd::user,
-          group  => $::proftpd::group,
+          source => $proftpd::authuserfile_source,
+          owner  => $proftpd::user,
+          group  => $proftpd::group,
           mode   => '0600',
-          before => File[$::proftpd::config],
+          before => File[$proftpd::config],
         }
       }
     } else {
@@ -72,11 +72,11 @@ class proftpd::config {
       if !defined(File[$__AuthGroupFile]) {
         file { $__AuthGroupFile:
           ensure => present,
-          source => $::proftpd::authgroupfile_source,
-          owner  => $::proftpd::user,
-          group  => $::proftpd::group,
+          source => $proftpd::authgroupfile_source,
+          owner  => $proftpd::user,
+          group  => $proftpd::group,
           mode   => '0600',
-          before => File[$::proftpd::config],
+          before => File[$proftpd::config],
         }
       }
     } elsif $real_options['Global'] and
@@ -85,11 +85,11 @@ class proftpd::config {
       if !defined(File[$real_options['Global']['AuthGroupFile']]) {
         file { $real_options['Global']['AuthGroupFile']:
           ensure => present,
-          source => $::proftpd::authgroupfile_source,
-          owner  => $::proftpd::user,
-          group  => $::proftpd::group,
+          source => $proftpd::authgroupfile_source,
+          owner  => $proftpd::user,
+          group  => $proftpd::group,
           mode   => '0600',
-          before => File[$::proftpd::config],
+          before => File[$proftpd::config],
         }
       }
     } else {
@@ -106,59 +106,59 @@ class proftpd::config {
 
     File {
       ensure  => present,
-      require => Class['::proftpd::install'],
+      require => Class['proftpd::install'],
     }
 
     file {
-      $::proftpd::base_dir:
+      $proftpd::base_dir:
         ensure => directory,
-        owner  => $::proftpd::config_user,
-        group  => $::proftpd::config_group;
+        owner  => $proftpd::config_user,
+        group  => $proftpd::config_group;
 
-      $::proftpd::log_dir:
+      $proftpd::log_dir:
         ensure => directory,
-        owner  => $::proftpd::config_user,
-        group  => $::proftpd::config_group;
+        owner  => $proftpd::config_user,
+        group  => $proftpd::config_group;
 
-      $::proftpd::run_dir:
+      $proftpd::run_dir:
         ensure => directory,
-        owner  => $::proftpd::config_user,
-        group  => $::proftpd::config_group;
+        owner  => $proftpd::config_user,
+        group  => $proftpd::config_group;
 
-      $::proftpd::config:
+      $proftpd::config:
         ensure       => file,
-        mode         => $::proftpd::config_mode,
-        content      => template($::proftpd::config_template),
-        validate_cmd => "${::proftpd::prefix_bin}/proftpd -t -c %",
-        owner        => $::proftpd::config_user,
-        group        => $::proftpd::config_group,
+        mode         => $proftpd::config_mode,
+        content      => template($proftpd::config_template),
+        validate_cmd => "${proftpd::prefix_bin}/proftpd -t -c %",
+        owner        => $proftpd::config_user,
+        group        => $proftpd::config_group,
         require      => $config_require,
-        notify       => Class[::proftpd::service];
+        notify       => Class[proftpd::service];
     }
 
     concat { $modules_config:
-      owner  => $::proftpd::config_user,
-      group  => $::proftpd::config_group,
+      owner  => $proftpd::config_user,
+      group  => $proftpd::config_group,
       # modules may be required for validate_cmd to succeed
-      before => File[$::proftpd::config],
-      notify => Class[::proftpd::service],
+      before => File[$proftpd::config],
+      notify => Class[proftpd::service],
     }
 
     concat::fragment { 'proftp_modules_header':
-      target  => "${::proftpd::base_dir}/modules.conf",
+      target  => "${proftpd::base_dir}/modules.conf",
       content => "# File is managed by Puppet\n",
       order   => '01',
     }
 
   }
-  if $::proftpd::manage_ftpasswd_file {
-    concat { $::proftpd::ftpasswd_file :
-      mode  => $::proftpd::config_mode,
-      owner => $::proftpd::user,
-      group => $::proftpd::group,
+  if $proftpd::manage_ftpasswd_file {
+    concat { $proftpd::ftpasswd_file :
+      mode  => $proftpd::config_mode,
+      owner => $proftpd::user,
+      group => $proftpd::group,
     }
     concat::fragment { '01-ftpasswd_file-header':
-      target  => $::proftpd::ftpasswd_file,
+      target  => $proftpd::ftpasswd_file,
       content => "### Managed by Puppet - Changes will be lost\n",
     }
   }
