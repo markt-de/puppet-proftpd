@@ -4,6 +4,8 @@ define proftpd::module (
   $enable = true,
   $order  = '10',
 ) {
+  assert_private()
+
   # Load module .c file from modules.conf.
   concat::fragment { "proftp_module_${name}":
     target  => "${proftpd::base_dir}/modules.conf",

@@ -1,6 +1,7 @@
 # == Class proftpd::config
 #
 class proftpd::config {
+  assert_private()
 
   # Should we manage the configuration at all?
   if $proftpd::manage_config_file {
