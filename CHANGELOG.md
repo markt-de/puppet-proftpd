@@ -1,5 +1,16 @@
 # Changelog
 
+## UNRELEASED
+
+### Added
+* introduce Puppet 4 parameter validation (#28)
+
+### Changed
+* allow stdlib and concat deps < 6.0.0  (#29)
+
+### Fixed
+* fix "Unknown variable: 'authuser_require'" (#26)
+
 ## 1.4.8
 * Breaking: Drop Puppet 3.x support
 * Feature: Allow to manage an ftpasswd file using resource declaration
