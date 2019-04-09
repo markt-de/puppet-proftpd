@@ -19,8 +19,9 @@ class proftpd::config {
 
     # check if defaults should be included
     # re-hash due to hiera 1.x known limitation
-    $hash_options = hiera_hash('proftpd::options',$proftpd::options)
-    if $proftpd::default_config {
+    # $hash_options = hiera_hash('proftpd::options',$proftpd::options)
+    $hash_options = lookup("proftpd::options", Optional[Hash], 'deep', "$proftpd::options")
+	if $proftpd::default_config {
       $real_options = deep_merge($real_defaults, $hash_options)
     }
     # do not include defaults
