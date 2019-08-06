@@ -13,6 +13,7 @@ class proftpd (
   String                         $service_ensure       = $proftpd::params::service_ensure,
   # os-specific parameters
   Optional[Stdlib::Absolutepath] $prefix               = $proftpd::params::prefix,
+  Stdlib::Filemode               $config_mode          = $proftpd::params::config_mode,
   Stdlib::Absolutepath           $prefix_bin           = $proftpd::params::prefix_bin,
   Stdlib::Absolutepath           $config               = $proftpd::params::config,
   Stdlib::Absolutepath           $base_dir             = $proftpd::params::base_dir,
