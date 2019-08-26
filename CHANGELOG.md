@@ -2,14 +2,18 @@
 
 ## UNRELEASED
 
+## 1.4.9
+
 ### Added
-* introduce Puppet 4 parameter validation (#28)
+* Introduce Puppet 4 parameter validation (#28)
+* Add new parameter `$config_mode` to set file mode for config files (#32)
 
 ### Changed
-* allow stdlib and concat deps < 6.0.0  (#29)
+* Allow stdlib and concat deps < 6.0.0  (#29)
+* Require Puppet >= 5.0.0
 
 ### Fixed
-* fix "Unknown variable: 'authuser_require'" (#26)
+* Fix "Unknown variable: 'authuser_require'" (#26)
 
 ## 1.4.8
 * Breaking: Drop Puppet 3.x support

@@ -1,6 +1,6 @@
 {
   "name": "fraenki-proftpd",
-  "version": "1.4.8",
+  "version": "1.4.9",
   "author": "Frank Wall",
   "summary": "Puppet module to manage ProFTPD",
   "license": "BSD-2-Clause",
@@ -13,7 +13,7 @@
     { "name": "puppetlabs/stdlib", "version_requirement": ">= 4.25.0 <6.0.0" }
   ],
   "requirements": [
-    { "name": "puppet", "version_requirement": ">= 4.0.0 < 6.0.0" }
+    { "name": "puppet", "version_requirement": ">= 5.0.0 < 6.0.0" }
   ],
   "operatingsystem_support": [
     { "operatingsystem": "Ubuntu" },
