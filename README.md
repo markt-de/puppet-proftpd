@@ -20,7 +20,7 @@ fraenki/proftpd is a Puppet module for managing ProFTPD. It allows for very flex
 
 ## Requirements
 
-* Puppet 4.x or 5.x
+* Puppet >= 5.0.0
 * [puppetlabs/concat](https://github.com/puppetlabs/puppetlabs-concat)
 * [puppetlabs/stdlib](https://github.com/puppetlabs/puppetlabs-stdlib)
 
@@ -211,6 +211,7 @@ You may want to use the `$options` parameter to overwrite default configuration 
 * `load_modules`: A hash of optional ProFTPD modules to load. It is possible to load modules in a specific order by using the `order` attribute.
 * `options`: Specify a hash containing options to either overwrite the default options or configure ProFTPD from scratch. Will be merged with `$default_options` hash (as long as `$default_config` is not set to 'false').
 * `default_options`: A hash containing a set of working default options for ProFTPD. This should make it easy to get a running service and to overwrite a few settings.
+* `config_mode`: File mode to be used for config files. Defaults to `0644`.
 * `config_template`: Specify which erb template to use.
 * `default_config`: Set to 'false' to disable loading of the default configuration. Defaults to 'true'.
 * `manage_config_file`: Set to 'false' to disable managing of the ProFTPD configuration file(s).
