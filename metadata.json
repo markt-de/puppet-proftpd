@@ -7,19 +7,41 @@
   "source": "https://github.com/fraenki/puppet-proftpd",
   "project_page": "https://github.com/fraenki/puppet-proftpd",
   "issues_url": "https://github.com/fraenki/puppet-proftpd/issues",
-  "description": "Puppet module to manage ProFTPD on FreeBSD and Linux with very flexible, hiera-friendly configuration",
   "dependencies": [
-    { "name": "puppetlabs/concat", "version_requirement": ">= 1.0.0 <6.0.0" },
-    { "name": "puppetlabs/stdlib", "version_requirement": ">= 4.25.0 <6.0.0" }
-  ],
-  "requirements": [
-    { "name": "puppet", "version_requirement": ">= 5.0.0 < 6.0.0" }
+    {
+      "name": "puppetlabs/concat",
+      "version_requirement": ">= 1.0.0 <6.0.0"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.25.0 <6.0.0"
+    }
   ],
   "operatingsystem_support": [
-    { "operatingsystem": "Ubuntu" },
-    { "operatingsystem": "Debian" },
-    { "operatingsystem": "RedHat" },
-    { "operatingsystem": "CentOS" },
-    { "operatingsystem": "FreeBSD" }
-  ]
+    {
+      "operatingsystem": "Ubuntu"
+    },
+    {
+      "operatingsystem": "Debian"
+    },
+    {
+      "operatingsystem": "RedHat"
+    },
+    {
+      "operatingsystem": "CentOS"
+    },
+    {
+      "operatingsystem": "FreeBSD"
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 5.0.0 < 6.0.0"
+    }
+  ],
+  "description": "Puppet module to manage ProFTPD on FreeBSD and Linux with very flexible, hiera-friendly configuration",
+  "pdk-version": "1.14.0",
+  "template-url": "pdk-default#1.14.0",
+  "template-ref": "1.14.0-0-g1bf3a4e"
 }
