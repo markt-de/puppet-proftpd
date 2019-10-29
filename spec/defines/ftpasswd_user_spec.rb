@@ -7,23 +7,25 @@ describe 'proftpd::ftpasswd_user' do
      }
      "
   end
+
   on_supported_os.each do |os, facts|
     case facts[:os]['family']
-      when 'Debian'
-        expected_base_dir       = '/etc/proftpd'
-        expected_ftpasswd_file  = "#{expected_base_dir}/ftpd.passwd"
-      when 'RedHat'
-        expected_base_dir       = '/etc/proftpd'
-        expected_ftpasswd_file  = "#{expected_base_dir}/ftpd.passwd"
-      when 'FreeBSD'
-        prefix                  = '/usr/local'
-        expected_base_dir       = "#{prefix}/etc/proftpd"
-        expected_ftpasswd_file  = "#{expected_base_dir}/ftpd.passwd"
-      end
+    when 'Debian'
+      expected_base_dir       = '/etc/proftpd'
+      expected_ftpasswd_file  = "#{expected_base_dir}/ftpd.passwd"
+    when 'RedHat'
+      expected_base_dir       = '/etc/proftpd'
+      expected_ftpasswd_file  = "#{expected_base_dir}/ftpd.passwd"
+    when 'FreeBSD'
+      prefix                  = '/usr/local'
+      expected_base_dir       = "#{prefix}/etc/proftpd"
+      expected_ftpasswd_file  = "#{expected_base_dir}/ftpd.passwd"
+    end
     context "on #{os}" do
-      let (:facts) {facts}
+      let(:facts) { facts }
       # Resource title:
       let(:title) { 'foobar' }
+
       context 'with minimum parameters' do
         let(:params) do
           {
@@ -32,10 +34,11 @@ describe 'proftpd::ftpasswd_user' do
             gid: 1001,
           }
         end
-        it { should compile.with_all_deps }
+
+        it { is_expected.to compile.with_all_deps }
         it { is_expected.to contain_concat(expected_ftpasswd_file) }
         it { is_expected.to contain_concat__fragment('01-ftpasswd_file-header') }
-        it do 
+        it do
           is_expected.to contain_concat__fragment('10-entry-foobar')
             .with_content(%r{foobar:123456:1001:1001:foobar:/home/foobar:/bin/false})
         end
@@ -48,13 +51,14 @@ describe 'proftpd::ftpasswd_user' do
             gid: 1001,
             gecos: 'Foobar user',
             homedir: '/var/www/html',
-            shell: '/bin/ksh'
+            shell: '/bin/ksh',
           }
         end
-        it { should compile.with_all_deps }
+
+        it { is_expected.to compile.with_all_deps }
         it { is_expected.to contain_concat(expected_ftpasswd_file) }
         it { is_expected.to contain_concat__fragment('01-ftpasswd_file-header') }
-        it do 
+        it do
           is_expected.to contain_concat__fragment('10-entry-foobar')
             .with_content(%r{foobar:123456:1001:1001:Foobar user:/var/www/html:/bin/ksh})
         end
