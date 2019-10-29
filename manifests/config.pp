@@ -18,13 +18,11 @@ class proftpd::config {
     else { $real_defaults = $proftpd::default_options }
 
     # check if defaults should be included
-    # re-hash due to hiera 1.x known limitation
-    $hash_options = hiera_hash('proftpd::options',$proftpd::options)
     if $proftpd::default_config {
-      $real_options = deep_merge($real_defaults, $hash_options)
+      $real_options = deep_merge($real_defaults, $proftpd::options)
     }
     # do not include defaults
-    else { $real_options = $hash_options }
+    else { $real_options = $proftpd::options }
 
     # required variables
     $base_dir     = $proftpd::base_dir
