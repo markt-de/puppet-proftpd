@@ -13,7 +13,6 @@ _Private Classes_
 
 * `proftpd::config`: Setup ProFTPD configuration
 * `proftpd::install`: Install ProFTPD packages
-* `proftpd::params`: Configuration defaults for ProFTPD
 * `proftpd::service`: Manage the ProFTPD service
 
 **Defined types**
@@ -42,15 +41,11 @@ Data type: `String[1]`
 
 Specify which erb template to use.
 
-Default value: $proftpd::params::config_template
-
 ##### `default_config`
 
 Data type: `Boolean`
 
 Set to `false` to disable loading of the default configuration. Defaults to `true`.
-
-Default value: $proftpd::params::default_config
 
 ##### `manage_config_file`
 
@@ -58,15 +53,11 @@ Data type: `Boolean`
 
 Set to `false` to disable managing of the ProFTPD configuration file(s).
 
-Default value: $proftpd::params::manage_config_file
-
 ##### `manage_ftpasswd_file`
 
 Data type: `Boolean`
 
 Set to `false` to disable managing of the ProFTPD ftpasswd file.
-
-Default value: $proftpd::params::manage_ftpasswd_file
 
 ##### `package_ensure`
 
@@ -74,15 +65,11 @@ Data type: `String`
 
 Overwrite the package `ensure` parameter.
 
-Default value: $proftpd::params::package_ensure
-
 ##### `package_manage`
 
 Data type: `Boolean`
 
 Set to `false` to disable package management. Defaults to `true`.
-
-Default value: $proftpd::params::package_manage
 
 ##### `service_manage`
 
@@ -90,23 +77,17 @@ Data type: `Boolean`
 
 Set to `false` to disable service management. Defaults to `true`.
 
-Default value: $proftpd::params::service_manage
-
 ##### `service_enable`
 
 Data type: `Boolean`
 
 Set to `false` to disable the ProFTPD system service. Defaults to `true`.
 
-Default value: $proftpd::params::service_enable
-
 ##### `service_ensure`
 
 Data type: `String`
 
 Overwrite the service `ensure` parameter.
-
-Default value: $proftpd::params::service_ensure
 
 ##### `prefix`
 
@@ -115,7 +96,7 @@ Data type: `Optional[Stdlib::Absolutepath]`
 Prefix to be added to all paths. Only required on certain operating systems
 or special installations.
 
-Default value: $proftpd::params::prefix
+Default value: `undef`
 
 ##### `config_mode`
 
@@ -123,15 +104,11 @@ Data type: `Stdlib::Filemode`
 
 File mode to be used for config files. Defaults to `0644`.
 
-Default value: $proftpd::params::config_mode
-
 ##### `prefix_bin`
 
 Data type: `Stdlib::Absolutepath`
 
 Path to the ProFTPD binary.
-
-Default value: $proftpd::params::prefix_bin
 
 ##### `config`
 
@@ -139,15 +116,11 @@ Data type: `Stdlib::Absolutepath`
 
 Path to the ProFTPD configuration file.
 
-Default value: $proftpd::params::config
-
 ##### `base_dir`
 
 Data type: `Stdlib::Absolutepath`
 
 Directory for additional configuration files.
-
-Default value: $proftpd::params::base_dir
 
 ##### `log_dir`
 
@@ -155,15 +128,11 @@ Data type: `Stdlib::Absolutepath`
 
 Directory for log files.
 
-Default value: $proftpd::params::log_dir
-
 ##### `run_dir`
 
 Data type: `Stdlib::Absolutepath`
 
 Directory for runtime files (except PIDfile).
-
-Default value: $proftpd::params::run_dir
 
 ##### `packages`
 
@@ -171,15 +140,11 @@ Data type: `Array[String[1]]`
 
 An array of packages which should be installed.
 
-Default value: $proftpd::params::packages
-
 ##### `service_name`
 
 Data type: `String[1]`
 
 The name of the ProFTPD service.
-
-Default value: $proftpd::params::service_name
 
 ##### `user`
 
@@ -187,15 +152,23 @@ Data type: `String[1]`
 
 Set the user under which the server will run.
 
-Default value: $proftpd::params::user
-
 ##### `group`
 
 Data type: `String[1]`
 
 Set the group under which the server will run.
 
-Default value: $proftpd::params::group
+##### `config_user`
+
+Data type: `String[1]`
+
+Set the user that should own all configuration files.
+
+##### `config_group`
+
+Data type: `String[1]`
+
+Set the user that should own all configuration files.
 
 ##### `pidfile`
 
@@ -203,23 +176,17 @@ Data type: `Stdlib::Absolutepath`
 
 Path and name of the PID file for the ProFTPD service.
 
-Default value: $proftpd::params::pidfile
-
 ##### `scoreboardfile`
 
 Data type: `Stdlib::Absolutepath`
 
 Path and name of the ScoreboardFile for the ProFTPD service.
 
-Default value: $proftpd::params::scoreboardfile
-
 ##### `ftpasswd_file`
 
 Data type: `Stdlib::Absolutepath`
 
 Path and name of the ftpasswd file.
-
-Default value: $proftpd::params::ftpasswd_file
 
 ##### `anonymous_options`
 
@@ -228,15 +195,11 @@ Data type: `Hash`
 An optional hash containing the default options to configure ProFTPD for
 anonymous FTP access. Use this to overwrite these defaults.
 
-Default value: $proftpd::params::anonymous_options
-
 ##### `anonymous_enable`
 
 Data type: `Boolean`
 
 Set to `true` to enable loading of the `$anonymous_options` hash.
-
-Default value: $proftpd::params::anonymous_enable
 
 ##### `default_options`
 
@@ -245,16 +208,12 @@ Data type: `Hash`
 A hash containing a set of working default options for ProFTPD. This should
 make it easy to get a running service and to overwrite a few settings.
 
-Default value: $proftpd::params::default_options
-
 ##### `load_modules`
 
 Data type: `Hash`
 
 A hash of optional ProFTPD modules to load. It is possible to load modules
 in a specific order by using the order attribute.
-
-Default value: $proftpd::params::load_modules
 
 ##### `options`
 
@@ -264,15 +223,13 @@ Specify a hash containing options to either overwrite the default options or
 configure ProFTPD from scratch. Will be merged with `$default_options` hash
 (as long as `$default_config` is not set to `false`).
 
-Default value: $proftpd::params::options
-
 ##### `authuserfile_source`
 
 Data type: `Optional[Stdlib::Filesource]`
 
 Inject the AuthUserFile by defining a Puppet source (e.g. puppet:///modules/mymodule/ftpd.passwd)
 
-Default value: $proftpd::params::authuserfile_source
+Default value: `undef`
 
 ##### `authgroupfile_source`
 
@@ -280,7 +237,7 @@ Data type: `Optional[Stdlib::Filesource]`
 
 Inject the AuthGroupFile by defining a Puppet source (e.g. puppet:///modules/mymodule/ftpd.group)
 
-Default value: $proftpd::params::authgroupfile_source
+Default value: `undef`
 
 ## Defined types
 
