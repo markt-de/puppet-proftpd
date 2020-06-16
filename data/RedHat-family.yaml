@@ -1,0 +1,6 @@
+---
+proftpd::config: '/etc/proftpd.conf'
+proftpd::group: 'nobody'
+proftpd::packages:
+  - 'proftpd'
+proftpd::user: 'nobody'

@@ -33,7 +33,6 @@ describe 'proftpd' do
       context 'with defaults parameters' do
         it { is_expected.to compile.with_all_deps }
         it { is_expected.to contain_class('proftpd') }
-        it { is_expected.to contain_class('proftpd::params') }
         it { is_expected.to contain_class('proftpd::install') }
         it { is_expected.to contain_class('proftpd::config') }
         it { is_expected.to contain_class('proftpd::service') }

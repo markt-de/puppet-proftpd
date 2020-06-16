@@ -1,0 +1,10 @@
+---
+proftpd::base_dir: "%{lookup('proftpd::prefix')}/etc/proftpd"
+proftpd::config: "%{lookup('proftpd::prefix')}/etc/proftpd.conf"
+proftpd::config_group: 'wheel'
+proftpd::group: 'nogroup'
+proftpd::packages:
+  - 'proftpd'
+proftpd::prefix: '/usr/local'
+proftpd::prefix_bin: "%{lookup('proftpd::prefix')}/sbin"
+proftpd::user: 'nobody'

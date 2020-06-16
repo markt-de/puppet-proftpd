@@ -1,1 +1,98 @@
 ---
+# Global module configuration
+proftpd::anonymous_enable: false
+proftpd::authgroupfile_source: ~
+proftpd::authuserfile_source: ~
+proftpd::config_template: "proftpd/proftpd.conf.erb"
+proftpd::default_config: true
+proftpd::load_modules: {}
+proftpd::manage_config_file: true
+proftpd::manage_ftpasswd_file: false
+proftpd::options: {}
+proftpd::package_ensure: 'present'
+proftpd::package_manage: true
+proftpd::service_enable: true
+proftpd::service_ensure: 'running'
+proftpd::service_manage: true
+
+# ProFTPD defaults
+proftpd::base_dir: '/etc/proftpd'
+proftpd::config: '/etc/proftpd.conf'
+proftpd::config_group: 'root'
+proftpd::config_mode: '0644'
+proftpd::config_user: 'root'
+proftpd::ftpasswd_file: "%{lookup('proftpd::base_dir')}/ftpd.passwd"
+proftpd::log_dir: '/var/log/proftpd'
+proftpd::pidfile: '/var/run/proftpd.pid'
+proftpd::prefix_bin: '/usr/sbin'
+proftpd::prefix: ~
+proftpd::run_dir: '/var/run/proftpd'
+proftpd::scoreboardfile: '/var/run/proftpd.scoreboard'
+proftpd::service_name: 'proftpd'
+
+# Minimal default config, should work on most systems
+proftpd::default_options:
+  'ROOT':
+    'ServerName': "ProFTPD server %{::fqdn}"
+    'ServerIdent': 'on "FTP Server ready."'
+    'ServerAdmin': "root@%{::domain}"
+    'DefaultServer': 'on'
+    'DefaultRoot': '~ !adm'
+    'AuthPAMConfig': 'proftpd'
+    'AuthOrder': 'mod_auth_pam.c* mod_auth_unix.c'
+    'UseReverseDNS': 'off'
+    'User': "%{lookup('proftpd::user')}"
+    'Group': "%{lookup('proftpd::group')}"
+    'MaxInstances': '20'
+    'UseSendfile': 'off'
+    'LogFormat':
+      - 'default  "%h %l %u %t \"%r\" %s %b"'
+      - 'auth     "%v [%P] %h %t \"%r\" %s"'
+    'TransferLog': "${log_dir}/xferlog"
+    'SystemLog': "${log_dir}/proftpd.log"
+    'ModuleControlsACLs':
+      - 'insmod,rmmod allow user root'
+      - 'lsmod allow user *'
+    'ControlsEngine': 'on'
+    'ControlsACLs': 'all allow user root'
+    'ControlsSocketACL': 'allow user *'
+    'ControlsLog': "%{lookup('proftpd::log_dir')}/controls.log"
+  'IfModule mod_ctrls_admin.c':
+    'AdminControlsEngine': 'on'
+    'AdminControlsACLs': 'all allow user root'
+  'IfModule mod_vroot.c':
+    'VRootEngine': 'on'
+  'IfModule mod_tls_shmcache.c':
+    'TLSSessionCache': "shm:/file=%{lookup('proftpd::run_dir')}/sesscache"
+  'Global':
+    'Umask': '022'
+    'RequireValidShell': 'off'
+    'AllowOverwrite': 'yes'
+    'Limit ALL SITE_CHMOD':
+      'AllowAll': true
+
+# Config to enable anonymous FTP access
+proftpd::anonymous_options:
+  'Anonymous ~ftp':
+    'User': 'ftp'
+    'Group': 'ftp'
+    'AccessGrantMsg': '"Anonymous login ok, restrictions apply."'
+    'UserAlias': 'anonymous ftp'
+    'MaxClients': '10 "Sorry, max %m users -- try again later"'
+    'DisplayLogin': '/welcome.msg'
+    'DisplayChdir': '.message'
+    'DisplayReadme': 'README*'
+    'DirFakeUser': 'on ftp'
+    'DirFakeGroup': 'on ftp'
+    'Limit WRITE SITE_CHMOD':
+      'DenyAll': true
+    'Directory uploads/*':
+      'AllowOverwrite': 'no'
+      'Limit READ':
+        'DenyAll': true
+      'Limit STOR':
+        'DenyAll': true
+    'WtmpLog': 'off'
+    'ExtendedLog':
+      - "%{lookup('proftpd::log_dir')}/access.log WRITE,READ default"
+      - "%{lookup('proftpd::log_dir')}/auth.log AUTH auth"
