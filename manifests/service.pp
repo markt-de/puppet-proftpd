@@ -1,5 +1,5 @@
-# == Class proftpd::service
-#
+# @summary Manage the ProFTPD service
+# @api private
 class proftpd::service {
   assert_private()
 

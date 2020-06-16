@@ -1,5 +1,5 @@
-# == Class proftpd::install
-#
+# @summary Install ProFTPD packages
+# @api private
 class proftpd::install {
   assert_private()
 

@@ -1,5 +1,5 @@
-# == Class proftpd::config
-#
+# @summary Setup ProFTPD configuration
+# @api private
 class proftpd::config {
   assert_private()
 

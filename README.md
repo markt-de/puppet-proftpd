@@ -1,3 +1,10 @@
+# puppet-proftpd
+
+[![Build Status](https://travis-ci.org/fraenki/puppet-proftpd.png?branch=master)](https://travis-ci.org/fraenki/puppet-proftpd)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/fraenki/proftpd.svg)](https://forge.puppetlabs.com/fraenki/proftpd)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/fraenki/proftpd.svg)](https://forge.puppetlabs.com/fraenki/proftpd)
+[![License](https://img.shields.io/github/license/fraenki/puppet-proftpd.svg)](https://github.com/fraenki/puppet-proftpd/blob/master/LICENSE.txt)
+
 #### Table of Contents
 
 1. [Overview](#overview)
@@ -7,7 +14,7 @@
     * [Using Hiera](#using-hiera)
 4. [Reference](#reference)
     * [Syntax](#syntax)
-    * [Parameters](#parameters)
+    * [Classes and Parameters](#classes-and-parameters)
 5. [Limitations](#limitations)
     * [OS Compatibility](#os-compatibility)
     * [Template Issues](#template-issues)
@@ -16,11 +23,11 @@
 
 ## Overview
 
-fraenki/proftpd is a Puppet module for managing ProFTPD. It allows for very flexible configuration and is hiera-friendly.
+A Puppet module for ProFTPD, hiera-friendly, highly configurable and well-tested.
 
 ## Requirements
 
-* Puppet >= 5.0.0
+* Puppet 5 or 6
 * [puppetlabs/concat](https://github.com/puppetlabs/puppetlabs-concat)
 * [puppetlabs/stdlib](https://github.com/puppetlabs/puppetlabs-stdlib)
 
@@ -204,36 +211,9 @@ You may want to use the `$options` parameter to overwrite default configuration 
 * `false`: Setting a value to 'false' will remove the item from the configuration.
 * `multiple values`: If you want to specify multiple values for the same configuration item (i.e. `LogFormat` or `ExtendedLog`), you need to specify these values as an array.
 
-### Parameters
+### Classes and Parameters
 
-* `anonymous_options`: An optional hash containing the default options to configure ProFTPD for anonymous FTP access. Use this to overwrite these defaults.
-* `anonymous_enable`: Set to 'true' to enable loading of the `$anonymous_options` hash.
-* `load_modules`: A hash of optional ProFTPD modules to load. It is possible to load modules in a specific order by using the `order` attribute.
-* `options`: Specify a hash containing options to either overwrite the default options or configure ProFTPD from scratch. Will be merged with `$default_options` hash (as long as `$default_config` is not set to 'false').
-* `default_options`: A hash containing a set of working default options for ProFTPD. This should make it easy to get a running service and to overwrite a few settings.
-* `config_mode`: File mode to be used for config files. Defaults to `0644`.
-* `config_template`: Specify which erb template to use.
-* `default_config`: Set to 'false' to disable loading of the default configuration. Defaults to 'true'.
-* `manage_config_file`: Set to 'false' to disable managing of the ProFTPD configuration file(s).
-* `packages`: An array of packages which should be installed.
-* `package_ensure`: Overwrite the package 'ensure' parameter.
-* `package_manage`: Set to 'false' to disable package management. Defaults to 'true'.
-* `service_name`: The name of the ProFTPD service.
-* `service_manage`: Set to 'false' to disable service management. Defaults to 'true'.
-* `service_enable`: Set to 'false' to disable the ProFTPD system service. Defaults to 'true'.
-* `service_ensure`: Overwrite the service 'ensure' parameter.
-* `prefix`: Prefix to be added to all paths. Only required on certain operating systems or special installations.
-* `prefix_bin`: Path to the ProFTPD binary.
-* `config`: Path to the ProFTPD configuration file.
-* `base_dir`: Directory for additional configuration files.
-* `log_dir`: Directory for log files.
-* `run_dir`: Directory for runtime files (except PIDfile).
-* `pidfile`: Path and name of the PIDfile for the ProFTPD service.
-* `scoreboardfile`: Path and name of the ScoreboardFile for the ProFTPD service.
-* `user`: Set the user under which the server will run.
-* `group`: Set the group under which the server will run.
-* `authuserfile_source`: Inject the `AuthUserFile` by defining a Puppet source (e.g. `puppet:///modules/mymodule/ftpd.passwd`)
-* `authgroupfile_source`: Inject the `AuthGroupFile` by defining a Puppet source (e.g. `puppet:///modules/mymodule/ftpd.group`)
+Classes and parameters are documented in [REFERENCE.md](REFERENCE.md).
 
 ## Limitations
 

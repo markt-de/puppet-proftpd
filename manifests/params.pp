@@ -1,8 +1,5 @@
-# == Class proftpd::params
-#
-# This class is meant to be called from proftpd.
-# It sets variables according to platform.
-#
+# @summary Configuration defaults for ProFTPD
+# @api private
 class proftpd::params {
   # global module configuration
   $anonymous_enable     = false

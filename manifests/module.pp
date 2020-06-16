@@ -1,5 +1,12 @@
-# == Define: proftpd::module
+# @summary Load a ProFTPD module
 #
+# @param enable
+#    Whether the module should be enabled.
+#
+# @param order
+#    Specify the order in which modules should be loaded.
+#
+# @api private
 define proftpd::module (
   $enable = true,
   $order  = '10',
