@@ -3,7 +3,6 @@
 [![Build Status](https://travis-ci.org/fraenki/puppet-proftpd.png?branch=master)](https://travis-ci.org/fraenki/puppet-proftpd)
 [![Puppet Forge](https://img.shields.io/puppetforge/v/fraenki/proftpd.svg)](https://forge.puppetlabs.com/fraenki/proftpd)
 [![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/fraenki/proftpd.svg)](https://forge.puppetlabs.com/fraenki/proftpd)
-[![License](https://img.shields.io/github/license/fraenki/puppet-proftpd.svg)](https://github.com/fraenki/puppet-proftpd/blob/master/LICENSE.txt)
 
 #### Table of Contents
 

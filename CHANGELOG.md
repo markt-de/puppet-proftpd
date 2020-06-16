@@ -4,10 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED] - 2020-06-16
+## [2.0.0] - 2020-06-17
+This is a new major release that may contain (unexpected) breaking changes. Please test in non-production environment and report any issues on GitHub.
 
 ### Changed
-* Declare compatible with Puppet 6 ([#35])
+* Migrate default values from `params.pp` to module data
+* Declare officially compatible with Puppet 6 ([#35])
 * Convert to PDK ([#33])
 * Replace deprecated functions ([#31])
 * Convert documentation to Puppet Strings
@@ -86,10 +88,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Feature: Setting an option to 'false' will remove it from the configuration.
 * Security: Change insecure default value in `$anonymous_options` to disable write access.
 
-## [1.0.0] - 2015-03-23
+## 1.0.0 - 2015-03-23
 * Initial release
 
-[Unreleased]: https://github.com/fraenki/puppet-proftpd/compare/1.4.9...HEAD
+[Unreleased]: https://github.com/fraenki/puppet-proftpd/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/fraenki/puppet-proftpd/compare/1.4.9...2.0.0
 [1.4.9]: https://github.com/fraenki/puppet-proftpd/compare/1.4.8...1.4.9
 [1.4.8]: https://github.com/fraenki/puppet-proftpd/compare/1.4.7...1.4.8
 [1.4.7]: https://github.com/fraenki/puppet-proftpd/compare/1.4.6...1.4.7
