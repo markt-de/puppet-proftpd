@@ -48,8 +48,8 @@ proftpd::default_options:
     'LogFormat':
       - 'default  "%h %l %u %t \"%r\" %s %b"'
       - 'auth     "%v [%P] %h %t \"%r\" %s"'
-    'TransferLog': "${log_dir}/xferlog"
-    'SystemLog': "${log_dir}/proftpd.log"
+    'TransferLog': "%{lookup('proftpd::log_dir')}/xferlog"
+    'SystemLog': "%{lookup('proftpd::log_dir')}/proftpd.log"
     'ModuleControlsACLs':
       - 'insmod,rmmod allow user root'
       - 'lsmod allow user *'
