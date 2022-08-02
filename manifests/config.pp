@@ -5,14 +5,12 @@ class proftpd::config {
 
   # Should we manage the configuration at all?
   if $proftpd::manage_config_file {
-
     $modules_config = "${proftpd::base_dir}/modules.conf"
 
     # check if anonymous access should be enabled
     if $proftpd::anonymous_enable {
       $real_defaults = deep_merge($proftpd::default_options,
-                                  $proftpd::anonymous_options)
-
+      $proftpd::anonymous_options)
     }
     # do not include options for anonymous access
     else { $real_defaults = $proftpd::default_options }
@@ -33,7 +31,6 @@ class proftpd::config {
       $authuser_require = File[$real_options['ROOT']['AuthUserFile']]
       if !defined(File[$real_options['ROOT']['AuthUserFile']]) {
         file { $real_options['ROOT']['AuthUserFile']:
-          ensure => present,
           source => $proftpd::authuserfile_source,
           owner  => $proftpd::user,
           group  => $proftpd::group,
@@ -42,15 +39,13 @@ class proftpd::config {
         }
       }
     } elsif $real_options['Global'] and
-        $real_options['Global']['AuthUserFile'] {
-
+    $real_options['Global']['AuthUserFile'] {
       # get the first argument and only use that for creating the file (don't use spaces in filename)
       $authuserfile = split($real_options['Global']['AuthUserFile'], ' ')[0]
 
       $authuser_require = File[$authuserfile]
       if !defined(File[$authuserfile]) {
         file { $authuserfile:
-          ensure => present,
           source => $proftpd::authuserfile_source,
           owner  => $proftpd::user,
           group  => $proftpd::group,
@@ -68,7 +63,6 @@ class proftpd::config {
       $authgroup_require = File[$authgroupfile]
       if !defined(File[$authgroupfile]) {
         file { $authgroupfile:
-          ensure => present,
           source => $proftpd::authgroupfile_source,
           owner  => $proftpd::user,
           group  => $proftpd::group,
@@ -77,11 +71,10 @@ class proftpd::config {
         }
       }
     } elsif $real_options['Global'] and
-        $real_options['Global']['AuthGroupFile'] {
+    $real_options['Global']['AuthGroupFile'] {
       $authgroup_require = File[$real_options['Global']['AuthGroupFile']]
       if !defined(File[$real_options['Global']['AuthGroupFile']]) {
         file { $real_options['Global']['AuthGroupFile']:
-          ensure => present,
           source => $proftpd::authgroupfile_source,
           owner  => $proftpd::user,
           group  => $proftpd::group,
@@ -94,7 +87,7 @@ class proftpd::config {
     }
     if $authuser_require and $authgroup_require {
       $config_require = [Concat[$modules_config], $authuser_require,
-                        $authgroup_require]
+      $authgroup_require]
     } elsif $authuser_require {
       $config_require = [Concat[$modules_config], $authuser_require]
     } elsif $authgroup_require {
@@ -146,10 +139,9 @@ class proftpd::config {
       content => "# File is managed by Puppet\n",
       order   => '01',
     }
-
   }
   if $proftpd::manage_ftpasswd_file {
-    concat { $proftpd::ftpasswd_file :
+    concat { $proftpd::ftpasswd_file:
       mode  => $proftpd::config_mode,
       owner => $proftpd::user,
       group => $proftpd::group,
