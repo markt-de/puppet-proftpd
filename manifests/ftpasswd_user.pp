@@ -24,17 +24,17 @@
 # @param ftpasswd_file
 #   The target ftpasswd file.
 define proftpd::ftpasswd_user (
-    $hashed_passwd,
-    $uid,
-    $gid,
-    $homedir = "/home/${name}",
-    $shell = '/bin/false',
-    $username = $name,
-    $gecos = $name,
-    $ftpasswd_file = $proftpd::ftpasswd_file,
+  String $hashed_passwd,
+  Integer $uid,
+  Integer $gid,
+  String $homedir = "/home/${name}",
+  String $shell = '/bin/false',
+  String $username = $name,
+  String $gecos = $name,
+  String $ftpasswd_file = $proftpd::ftpasswd_file,
 ) {
-    concat::fragment { "10-entry-${username}":
-      content => "${username}:${hashed_passwd}:${uid}:${gid}:${gecos}:${homedir}:${shell}\n",
-      target  => $ftpasswd_file,
-    }
+  concat::fragment { "10-entry-${username}":
+    content => "${username}:${hashed_passwd}:${uid}:${gid}:${gecos}:${homedir}:${shell}\n",
+    target  => $ftpasswd_file,
+  }
 }

@@ -8,8 +8,8 @@
 #
 # @api private
 define proftpd::module (
-  $enable = true,
-  $order  = '10',
+  Boolean $enable = true,
+  Variant[Integer,String] $order = '10',
 ) {
   assert_private()
 

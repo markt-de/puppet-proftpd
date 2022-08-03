@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2022-08-02
+
+### Changed
+* Update OS version, Puppet version and dependencies
+* Update PDK from 1.18.0 to 2.5.0
+* Fix puppet-lint offenses
+
 ## [2.0.0] - 2020-06-17
 This is a new major release that may contain (unexpected) breaking changes. Please test in non-production environment and report any issues on GitHub.
 
@@ -91,7 +98,8 @@ This is a new major release that may contain (unexpected) breaking changes. Plea
 ## 1.0.0 - 2015-03-23
 * Initial release
 
-[Unreleased]: https://github.com/fraenki/puppet-proftpd/compare/2.0.0...HEAD
+[Unreleased]: https://github.com/fraenki/puppet-proftpd/compare/2.1.0...HEAD
+[2.1.0]: https://github.com/fraenki/puppet-proftpd/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/fraenki/puppet-proftpd/compare/1.4.9...2.0.0
 [1.4.9]: https://github.com/fraenki/puppet-proftpd/compare/1.4.8...1.4.9
 [1.4.8]: https://github.com/fraenki/puppet-proftpd/compare/1.4.7...1.4.8
