@@ -143,7 +143,8 @@ class proftpd (
   class { 'proftpd::install': }
   -> class { 'proftpd::config': }
   ~> class { 'proftpd::service': }
- if $load_modules {
+  
+  if $load_modules {
     create_resources(proftpd::module, $load_modules, {})
   }
 }
