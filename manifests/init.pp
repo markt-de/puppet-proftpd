@@ -140,15 +140,10 @@ class proftpd (
   Optional[Stdlib::Filesource] $authgroupfile_source = undef,
   Optional[Stdlib::Absolutepath] $prefix = undef,
 ) {
-  if (($facts['os']['name'] == 'Debian') and ($facts['os']['release']['major'] < 8 )){
-    fail("Unsupported OS Version ${facts['os']['name']} ${facts['os']['release']['major']}")
-  }else{
-    class { 'proftpd::install': }
-    -> class { 'proftpd::config': }
-    ~> class { 'proftpd::service': }
-
-    if $load_modules {
-      create_resources(proftpd::module, $load_modules, {})
-    }
+  class { 'proftpd::install': }
+  -> class { 'proftpd::config': }
+  ~> class { 'proftpd::service': }
+ if $load_modules {
+    create_resources(proftpd::module, $load_modules, {})
   }
 }
