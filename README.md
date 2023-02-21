@@ -7,28 +7,21 @@
 #### Table of Contents
 
 1. [Overview](#overview)
-2. [Requirements](#requirements)
-3. [Usage](#usage)
+2. [Usage](#usage)
     * [Beginning with proftpd](#beginning-with-proftpd)
     * [Using Hiera](#using-hiera)
-4. [Reference](#reference)
+3. [Reference](#reference)
     * [Syntax](#syntax)
     * [Classes and Parameters](#classes-and-parameters)
-5. [Limitations](#limitations)
+4. [Limitations](#limitations)
     * [OS Compatibility](#os-compatibility)
     * [Template Issues](#template-issues)
-6. [Development](#development)
-7. [Contributors](#contributors)
+5. [Development](#development)
+6. [Contributors](#contributors)
 
 ## Overview
 
 A Puppet module for ProFTPD, hiera-friendly, highly configurable and well-tested.
-
-## Requirements
-
-* Puppet 5 or 6
-* [puppetlabs/concat](https://github.com/puppetlabs/puppetlabs-concat)
-* [puppetlabs/stdlib](https://github.com/puppetlabs/puppetlabs-stdlib)
 
 ## Usage
 
@@ -215,10 +208,6 @@ You may want to use the `$options` parameter to overwrite default configuration 
 Classes and parameters are documented in [REFERENCE.md](REFERENCE.md).
 
 ## Limitations
-
-### No Ruby 1.8 support
-
-Some users reported issues when running this module on Ruby 1.8. The config file may change on every puppet run. Please upgrade to Ruby 1.9 to fix this issue. (See [PUP-1755](https://tickets.puppetlabs.com/browse/PUP-1755) for more details and a description of the root cause.)
 
 ### OS Compatibility
 
