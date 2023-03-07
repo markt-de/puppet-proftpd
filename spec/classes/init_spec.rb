@@ -9,7 +9,11 @@ describe 'proftpd' do
       expected_base_dir       = '/etc/proftpd'
       expected_log_dir        = '/var/log/proftpd'
       expected_run_dir        = '/var/run/proftpd'
-      expected_packages       = ['proftpd-basic']
+      expected_packages       = if facts[:os]['distro']['codename'] == 'bullseye'
+                                  ['proftpd-core']
+                                else
+                                  ['proftpd-basic']
+                                end
       expected_service_name   = 'proftpd'
     when 'RedHat'
       expected_config         = '/etc/proftpd.conf'
