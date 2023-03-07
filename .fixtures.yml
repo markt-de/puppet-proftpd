@@ -1,6 +1,9 @@
 fixtures:
-  forge_modules:
-    concat: "puppetlabs/concat"
-    stdlib: "puppetlabs/stdlib"
+  repositories:
+    concat: "https://github.com/puppetlabs/puppetlabs-concat.git"
+    facts: "https://github.com/puppetlabs/puppetlabs-facts.git"
+    provision: "https://github.com/puppetlabs/provision.git"
+    puppet_agent: "https://github.com/puppetlabs/puppetlabs-puppet_agent.git"
+    stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
   symlinks:
     proftpd: "#{source_dir}"
