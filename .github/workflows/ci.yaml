@@ -25,11 +25,13 @@ jobs:
       - name: Run pdk validate
         uses: puppets-epic-show-theatre/action-pdk-validate@v1
         with:
+          pdk-image: puppet/pdk:nightly
           puppet-version: ${{ matrix.puppet_version }}
 
       - name: Run pdk test unit
         uses: puppets-epic-show-theatre/action-pdk-test-unit@v1
         with:
+          pdk-image: puppet/pdk:nightly
           puppet-version: ${{ matrix.puppet_version }}
 
   acceptance:
