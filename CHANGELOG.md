@@ -4,10 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [2.2.0] - 2023-07-11
+
+### Added
+* Add Github Actions & basic acceptance test ([#41])
 
 ### Changed
 * Update package name on Debian 11 ([#40])
+* Replace legacy facts with modern facts ([#39])
+* Update PDK ([#41])
+* Allow stdlib and concat <= 9.0.0 ([#44])
 
 ## [2.1.0] - 2022-08-02
 
@@ -103,7 +109,8 @@ This is a new major release that may contain (unexpected) breaking changes. Plea
 ## 1.0.0 - 2015-03-23
 * Initial release
 
-[Unreleased]: https://github.com/fraenki/puppet-proftpd/compare/2.1.0...HEAD
+[Unreleased]: https://github.com/fraenki/puppet-proftpd/compare/2.2.0...HEAD
+[2.2.0]: https://github.com/fraenki/puppet-proftpd/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/fraenki/puppet-proftpd/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/fraenki/puppet-proftpd/compare/1.4.9...2.0.0
 [1.4.9]: https://github.com/fraenki/puppet-proftpd/compare/1.4.8...1.4.9
@@ -120,7 +127,10 @@ This is a new major release that may contain (unexpected) breaking changes. Plea
 [1.2.0]: https://github.com/fraenki/puppet-proftpd/compare/1.1.1...1.2.0
 [1.1.1]: https://github.com/fraenki/puppet-proftpd/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/fraenki/puppet-proftpd/compare/1.0.0...1.1.0
+[#44]: https://github.com/fraenki/puppet-proftpd/issues/44
+[#41]: https://github.com/fraenki/puppet-proftpd/issues/41
 [#40]: https://github.com/fraenki/puppet-proftpd/issues/40
+[#39]: https://github.com/fraenki/puppet-proftpd/issues/39
 [#35]: https://github.com/fraenki/puppet-proftpd/issues/35
 [#33]: https://github.com/fraenki/puppet-proftpd/issues/33
 [#32]: https://github.com/fraenki/puppet-proftpd/issues/32

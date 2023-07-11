@@ -1,12 +1,12 @@
 {
-  "name": "fraenki-proftpd",
-  "version": "2.1.0",
-  "author": "Frank Wall",
+  "name": "markt-proftpd",
+  "version": "2.2.0",
+  "author": "markt.de",
   "summary": "Puppet module to manage ProFTPD",
   "license": "BSD-2-Clause",
-  "source": "https://github.com/fraenki/puppet-proftpd",
-  "project_page": "https://github.com/fraenki/puppet-proftpd",
-  "issues_url": "https://github.com/fraenki/puppet-proftpd/issues",
+  "source": "https://github.com/markt-de/puppet-proftpd",
+  "project_page": "https://github.com/markt-de/puppet-proftpd",
+  "issues_url": "https://github.com/markt-de/puppet-proftpd/issues",
   "dependencies": [
     {
       "name": "puppetlabs/concat",

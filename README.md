@@ -1,8 +1,8 @@
 # puppet-proftpd
 
-[![Build Status](https://travis-ci.org/fraenki/puppet-proftpd.png?branch=master)](https://travis-ci.org/fraenki/puppet-proftpd)
-[![Puppet Forge](https://img.shields.io/puppetforge/v/fraenki/proftpd.svg)](https://forge.puppetlabs.com/fraenki/proftpd)
-[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/fraenki/proftpd.svg)](https://forge.puppetlabs.com/fraenki/proftpd)
+[![Build Status](https://github.com/markt-de/puppet-proftpd/actions/workflows/ci.yaml/badge.svg)](https://github.com/markt-de/puppet-proftpd/actions/workflows/ci.yaml)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/markt/proftpd.svg)](https://forge.puppetlabs.com/markt/proftpd)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/markt/proftpd.svg)](https://forge.puppetlabs.com/markt/proftpd)
 
 #### Table of Contents
 
