@@ -6,11 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+* New dependency: puppetlabs/yumrepo_core
+
 ### Fixed
 * Fix acceptance tests on Rocky/RHEL 8
 
 ### Changed
 * Add a resource relationship for yumrepo on RHEL
+* Make puppet/epel a dependency (was previously only a "soft" dependency)
 
 ## [2.2.0] - 2023-07-11
 
