@@ -4,7 +4,7 @@ class proftpd::install {
   assert_private()
 
   if $facts['os']['family'] == 'RedHat' {
-     Yumrepo <| |> -> Package <| |>
+    Yumrepo <| |> -> Package <| |>
   }
 
   if $proftpd::package_manage {
