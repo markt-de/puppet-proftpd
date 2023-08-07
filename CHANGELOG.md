@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 * Add a resource relationship for yumrepo on RHEL
 * Make puppet/epel a dependency (was previously only a "soft" dependency)
+* Update OS support, Puppet version and module dependencies
 
 ## [2.2.0] - 2023-07-11
 
