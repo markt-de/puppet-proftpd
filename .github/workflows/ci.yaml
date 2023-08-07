@@ -13,35 +13,37 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        puppet_version: [6,7]
+        puppet_version: [7]
 
     name: Check / Puppet ${{ matrix.puppet_version }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
+    container: puppet/pdk:latest
 
     steps:
+      - name: Install build-essential
+        run: |
+          export DEBIAN_FRONTEND=noninteractive;
+          apt-get --yes update
+          apt-get --yes install build-essential
+
       - name: Checkout source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Run pdk validate
-        uses: puppets-epic-show-theatre/action-pdk-validate@v1
-        with:
-          puppet-version: ${{ matrix.puppet_version }}
+        run: pdk validate --format=text --puppet-version ${{ matrix.puppet_version }}
 
       - name: Run pdk test unit
-        uses: puppets-epic-show-theatre/action-pdk-test-unit@v1
-        with:
-          puppet-version: ${{ matrix.puppet_version }}
+        run: pdk test unit --format=text --puppet-version ${{ matrix.puppet_version }}
 
   acceptance:
     strategy:
       fail-fast: false
       matrix:
-        #os: [ 'el7', 'el8', 'el8_stream', 'rocky8', 'alma8', 'el9_stream' 'deb10', 'deb11','ub2004', 'ub2204' ]
-        os: [ 'el8', 'rocky8' ]
-        puppet_version: [6,7]
+        os: ['rocky8', 'ub2204', 'deb11']
+        puppet_version: [7]
 
     name: Acceptance / ${{ matrix.os }} / Puppet ${{ matrix.puppet_version }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs:
       - check
 
@@ -50,8 +52,9 @@ jobs:
         run: |
           echo '{"ipv6":true,"fixed-cidr-v6":"2001:db8:1::/64"}' | sudo tee /etc/docker/daemon.json
           sudo service docker restart
+
       - name: Checkout source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -67,6 +70,7 @@ jobs:
           bundle exec rake 'litmus:install_agent[puppet${{ matrix.puppet_version }}]'
           bundle exec rake litmus:install_module
           bundle exec rake litmus:acceptance:parallel
+
       - name: Cleanup
         run: |
           bundle exec rake 'litmus:tear_down'
