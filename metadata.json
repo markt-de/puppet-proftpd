@@ -67,13 +67,13 @@
     }
   ],
   "description": "Puppet module to manage ProFTPD on FreeBSD and Linux with very flexible, hiera-friendly configuration",
-  "pdk-version": "2.6.1",
   "tags": [
     "proftpd",
     "proftp",
     "ftp",
     "ftps"
   ],
-  "template-url": "pdk-default#2.7.1",
-  "template-ref": "tags/2.7.1-0-g9a16c87"
+  "pdk-version": "3.0.1",
+  "template-url": "https://github.com/markt-de/pdk-templates.git#main",
+  "template-ref": "heads/main-0-g909fd77"
 }
