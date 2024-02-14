@@ -35,7 +35,7 @@ proftpd::default_options:
   'ROOT':
     'ServerName': "ProFTPD server %{facts.networking.fqdn}"
     'ServerIdent': 'on "FTP Server ready."'
-    'ServerAdmin': "root@%{fact.networking.domain}"
+    'ServerAdmin': "root@%{facts.networking.domain}"
     'DefaultServer': 'on'
     'DefaultRoot': '~ !adm'
     'AuthPAMConfig': 'proftpd'
