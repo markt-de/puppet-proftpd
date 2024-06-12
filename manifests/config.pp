@@ -43,15 +43,19 @@ class proftpd::config {
       # get the first argument and only use that for creating the file (don't use spaces in filename)
       $authuserfile = split($real_options['Global']['AuthUserFile'], ' ')[0]
 
-      $authuser_require = File[$authuserfile]
-      if !defined(File[$authuserfile]) {
-        file { $authuserfile:
-          source => $proftpd::authuserfile_source,
-          owner  => $proftpd::user,
-          group  => $proftpd::group,
-          mode   => '0600',
-          before => File[$proftpd::config],
+      if !$proftpd::manage_ftpasswd_file {
+        $authuser_require = File[$authuserfile]
+        if !defined(File[$authuserfile]) {
+          file { $authuserfile:
+            source => $proftpd::authuserfile_source,
+            owner  => $proftpd::user,
+            group  => $proftpd::group,
+            mode   => '0600',
+            before => File[$proftpd::config],
+          }
         }
+      } else {
+        $authuser_require = false
       }
     } else {
       $authuser_require = false
@@ -127,28 +131,22 @@ class proftpd::config {
     }
 
     concat { $modules_config:
+      warn   => true,
       owner  => $proftpd::config_user,
       group  => $proftpd::config_group,
       # modules may be required for validate_cmd to succeed
       before => File[$proftpd::config],
       notify => Class[proftpd::service],
     }
-
-    concat::fragment { 'proftp_modules_header':
-      target  => "${proftpd::base_dir}/modules.conf",
-      content => "# File is managed by Puppet\n",
-      order   => '01',
-    }
   }
   if $proftpd::manage_ftpasswd_file {
     concat { $proftpd::ftpasswd_file:
-      mode  => $proftpd::config_mode,
-      owner => $proftpd::user,
-      group => $proftpd::group,
-    }
-    concat::fragment { '01-ftpasswd_file-header':
-      target  => $proftpd::ftpasswd_file,
-      content => "### Managed by Puppet - Changes will be lost\n",
+      warn   => true,
+      mode   => '0600',
+      owner  => $proftpd::user,
+      group  => $proftpd::group,
+      before => File[$proftpd::config],
+      notify => Class[proftpd::service],
     }
   }
 }
