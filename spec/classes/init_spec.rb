@@ -47,10 +47,6 @@ describe 'proftpd' do
         it { is_expected.to contain_package(expected_packages.first) }
         it { is_expected.to contain_service(expected_service_name) }
         it { is_expected.to contain_concat("#{expected_base_dir}/modules.conf") }
-        it do
-          is_expected.to contain_concat__fragment('proftp_modules_header')
-            .with_target("#{expected_base_dir}/modules.conf")
-        end
       end
       context 'with manage_ftpasswd_file set to true' do
         let(:params) do

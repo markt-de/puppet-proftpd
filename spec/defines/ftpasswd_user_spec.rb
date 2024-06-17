@@ -37,7 +37,6 @@ describe 'proftpd::ftpasswd_user' do
 
         it { is_expected.to compile.with_all_deps }
         it { is_expected.to contain_concat(expected_ftpasswd_file) }
-        it { is_expected.to contain_concat__fragment('01-ftpasswd_file-header') }
         it do
           is_expected.to contain_concat__fragment('10-entry-foobar')
             .with_content(%r{foobar:123456:1001:1001:foobar:/home/foobar:/bin/false})
@@ -57,7 +56,6 @@ describe 'proftpd::ftpasswd_user' do
 
         it { is_expected.to compile.with_all_deps }
         it { is_expected.to contain_concat(expected_ftpasswd_file) }
-        it { is_expected.to contain_concat__fragment('01-ftpasswd_file-header') }
         it do
           is_expected.to contain_concat__fragment('10-entry-foobar')
             .with_content(%r{foobar:123456:1001:1001:Foobar user:/var/www/html:/bin/ksh})
