@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.4.1] - 2024-06-17
+
+### Fixed
+* Fix typo in common.yaml ([#47])
+* Do not use file resource when concat is in use ([#49])
+
+### Changed
+* Update module dependencies
+* Update to PDK 3.0.1
+
+### Removed
+* Drop legacy os support
+
 ## [2.3.0] - 2023-08-07
 
 ### Added
@@ -16,6 +29,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Add a resource relationship for yumrepo on RHEL
 * Make puppet/epel a dependency (was previously only a "soft" dependency)
 * Update OS support, Puppet version and module dependencies
+
+## [2.4.0] - 2024-06-17
+Release 2.4.0 was incorrectly build and as a result immediately removed.
 
 ## [2.2.0] - 2023-07-11
 
@@ -122,7 +138,8 @@ This is a new major release that may contain (unexpected) breaking changes. Plea
 ## 1.0.0 - 2015-03-23
 * Initial release
 
-[Unreleased]: https://github.com/fraenki/puppet-proftpd/compare/v2.3.0...HEAD
+[Unreleased]: https://github.com/fraenki/puppet-proftpd/compare/v2.4.1...HEAD
+[2.4.1]: https://github.com/fraenki/puppet-proftpd/compare/v2.3.0...v2.4.1
 [2.3.0]: https://github.com/fraenki/puppet-proftpd/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/fraenki/puppet-proftpd/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/fraenki/puppet-proftpd/compare/v2.0.0...v2.1.0
@@ -141,6 +158,8 @@ This is a new major release that may contain (unexpected) breaking changes. Plea
 [1.2.0]: https://github.com/fraenki/puppet-proftpd/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/fraenki/puppet-proftpd/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/fraenki/puppet-proftpd/compare/v1.0.0...v1.1.0
+[#49]: https://github.com/fraenki/puppet-proftpd/issues/49
+[#47]: https://github.com/fraenki/puppet-proftpd/issues/47
 [#44]: https://github.com/fraenki/puppet-proftpd/issues/44
 [#41]: https://github.com/fraenki/puppet-proftpd/issues/41
 [#40]: https://github.com/fraenki/puppet-proftpd/issues/40
