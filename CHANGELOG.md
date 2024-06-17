@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Removed
 * Drop legacy os support
 
+## [2.4.0] - 2024-06-17
+Release 2.4.0 was incorrectly build and as a result immediately removed.
+
 ## [2.3.0] - 2023-08-07
 
 ### Added
@@ -29,9 +32,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Add a resource relationship for yumrepo on RHEL
 * Make puppet/epel a dependency (was previously only a "soft" dependency)
 * Update OS support, Puppet version and module dependencies
-
-## [2.4.0] - 2024-06-17
-Release 2.4.0 was incorrectly build and as a result immediately removed.
 
 ## [2.2.0] - 2023-07-11
 
