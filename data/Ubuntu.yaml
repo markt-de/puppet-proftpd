@@ -1,6 +1,6 @@
 ---
 proftpd::config: '/etc/proftpd/proftpd.conf'
 proftpd::group: 'nogroup'
-proftpd::packages:
-  - 'proftpd-basic'
 proftpd::user: 'proftpd'
+proftpd::packages:
+  - 'proftpd-core'
