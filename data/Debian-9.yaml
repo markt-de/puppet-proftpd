@@ -1,3 +1,0 @@
----
-proftpd::packages:
-  - 'proftpd-basic'

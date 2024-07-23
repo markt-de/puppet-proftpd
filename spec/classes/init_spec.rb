@@ -9,10 +9,14 @@ describe 'proftpd' do
       expected_base_dir       = '/etc/proftpd'
       expected_log_dir        = '/var/log/proftpd'
       expected_run_dir        = '/var/run/proftpd'
-      expected_packages       = if facts[:os]['distro']['codename'] == 'bullseye'
-                                  ['proftpd-core']
-                                else
+      expected_packages       = if facts[:os]['name'] == 'Debian'
                                   ['proftpd-basic']
+                                elsif facts[:os]['name'] == 'Ubuntu'
+                                  if facts[:os]['release']['full'] == '20.04'
+                                    ['proftpd-basic']
+                                  else
+                                    ['proftpd-core']
+                                  end
                                 end
       expected_service_name   = 'proftpd'
     when 'RedHat'
