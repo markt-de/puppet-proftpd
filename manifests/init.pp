@@ -140,9 +140,10 @@ class proftpd (
   Optional[Stdlib::Filesource] $authgroupfile_source = undef,
   Optional[Stdlib::Absolutepath] $prefix = undef,
 ) {
-  class { 'proftpd::install': }
-  -> class { 'proftpd::config': }
-  ~> class { 'proftpd::service': }
+  contain proftpd::install
+  contain proftpd::config
+  contain proftpd::service
+  Class['proftpd::install'] -> Class['proftpd::config'] ~> Class['proftpd::service']
 
   if $load_modules {
     create_resources(proftpd::module, $load_modules, {})
