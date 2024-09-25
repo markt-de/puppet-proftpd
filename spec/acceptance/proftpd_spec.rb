@@ -6,6 +6,7 @@ describe 'proftpd class' do
       pp = <<-EOS
       if $facts['os']['family'] == 'RedHat' {
         include epel
+        Class['epel'] -> Class['proftpd']
       }
       class { 'proftpd': }
       EOS
