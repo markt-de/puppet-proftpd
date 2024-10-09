@@ -1,6 +1,6 @@
 {
   "name": "markt-proftpd",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "author": "markt.de",
   "summary": "Puppet module to manage ProFTPD",
   "license": "BSD-2-Clause",

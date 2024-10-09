@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.5.0] - 2024-10-09
+
+### Fixed
+* Fix dependency loop ([#53])
+* Fix Debian and Ubuntu package names
+
+### Changed
+* Update OS support
+* Update to PDK 3.2.0 ([#50])
+* Add dependency marktlib
+
 ## [2.4.1] - 2024-06-17
 
 ### Fixed
@@ -138,36 +149,40 @@ This is a new major release that may contain (unexpected) breaking changes. Plea
 ## 1.0.0 - 2015-03-23
 * Initial release
 
-[Unreleased]: https://github.com/fraenki/puppet-proftpd/compare/v2.4.1...HEAD
-[2.4.1]: https://github.com/fraenki/puppet-proftpd/compare/v2.3.0...v2.4.1
-[2.3.0]: https://github.com/fraenki/puppet-proftpd/compare/v2.2.0...v2.3.0
-[2.2.0]: https://github.com/fraenki/puppet-proftpd/compare/v2.1.0...v2.2.0
-[2.1.0]: https://github.com/fraenki/puppet-proftpd/compare/v2.0.0...v2.1.0
-[2.0.0]: https://github.com/fraenki/puppet-proftpd/compare/v1.4.9...v2.0.0
-[1.4.9]: https://github.com/fraenki/puppet-proftpd/compare/v1.4.8...v1.4.9
-[1.4.8]: https://github.com/fraenki/puppet-proftpd/compare/v1.4.7...v1.4.8
-[1.4.7]: https://github.com/fraenki/puppet-proftpd/compare/v1.4.6...v1.4.7
-[1.4.6]: https://github.com/fraenki/puppet-proftpd/compare/v1.4.5...v1.4.6
-[1.4.5]: https://github.com/fraenki/puppet-proftpd/compare/v1.4.4...v1.4.5
-[1.4.4]: https://github.com/fraenki/puppet-proftpd/compare/v1.4.3...v1.4.4
-[1.4.3]: https://github.com/fraenki/puppet-proftpd/compare/v1.4.2...v1.4.3
-[1.4.2]: https://github.com/fraenki/puppet-proftpd/compare/v1.4.1...v1.4.2
-[1.4.1]: https://github.com/fraenki/puppet-proftpd/compare/v1.4.0...v1.4.1
-[1.4.0]: https://github.com/fraenki/puppet-proftpd/compare/v1.3.0...v1.4.0
-[1.3.0]: https://github.com/fraenki/puppet-proftpd/compare/v1.2.0...v1.3.0
-[1.2.0]: https://github.com/fraenki/puppet-proftpd/compare/v1.1.1...v1.2.0
-[1.1.1]: https://github.com/fraenki/puppet-proftpd/compare/v1.1.0...v1.1.1
-[1.1.0]: https://github.com/fraenki/puppet-proftpd/compare/v1.0.0...v1.1.0
-[#49]: https://github.com/fraenki/puppet-proftpd/issues/49
-[#47]: https://github.com/fraenki/puppet-proftpd/issues/47
-[#44]: https://github.com/fraenki/puppet-proftpd/issues/44
-[#41]: https://github.com/fraenki/puppet-proftpd/issues/41
-[#40]: https://github.com/fraenki/puppet-proftpd/issues/40
-[#39]: https://github.com/fraenki/puppet-proftpd/issues/39
-[#35]: https://github.com/fraenki/puppet-proftpd/issues/35
-[#33]: https://github.com/fraenki/puppet-proftpd/issues/33
-[#32]: https://github.com/fraenki/puppet-proftpd/issues/32
-[#31]: https://github.com/fraenki/puppet-proftpd/issues/31
-[#29]: https://github.com/fraenki/puppet-proftpd/issues/29
-[#28]: https://github.com/fraenki/puppet-proftpd/issues/28
-[#26]: https://github.com/fraenki/puppet-proftpd/issues/26
+[Unreleased]: https://github.com/markt-de/puppet-proftpd/compare/v2.5.0...HEAD
+[2.5.0]: https://github.com/markt-de/puppet-proftpd/compare/v2.4.1...v2.5.0
+[2.4.1]: https://github.com/markt-de/puppet-proftpd/compare/v2.3.0...v2.4.1
+[2.3.0]: https://github.com/markt-de/puppet-proftpd/compare/v2.2.0...v2.3.0
+[2.2.0]: https://github.com/markt-de/puppet-proftpd/compare/v2.1.0...v2.2.0
+[2.1.0]: https://github.com/markt-de/puppet-proftpd/compare/v2.0.0...v2.1.0
+[2.0.0]: https://github.com/markt-de/puppet-proftpd/compare/v1.4.9...v2.0.0
+[1.4.9]: https://github.com/markt-de/puppet-proftpd/compare/v1.4.8...v1.4.9
+[1.4.8]: https://github.com/markt-de/puppet-proftpd/compare/v1.4.7...v1.4.8
+[1.4.7]: https://github.com/markt-de/puppet-proftpd/compare/v1.4.6...v1.4.7
+[1.4.6]: https://github.com/markt-de/puppet-proftpd/compare/v1.4.5...v1.4.6
+[1.4.5]: https://github.com/markt-de/puppet-proftpd/compare/v1.4.4...v1.4.5
+[1.4.4]: https://github.com/markt-de/puppet-proftpd/compare/v1.4.3...v1.4.4
+[1.4.3]: https://github.com/markt-de/puppet-proftpd/compare/v1.4.2...v1.4.3
+[1.4.2]: https://github.com/markt-de/puppet-proftpd/compare/v1.4.1...v1.4.2
+[1.4.1]: https://github.com/markt-de/puppet-proftpd/compare/v1.4.0...v1.4.1
+[1.4.0]: https://github.com/markt-de/puppet-proftpd/compare/v1.3.0...v1.4.0
+[1.3.0]: https://github.com/markt-de/puppet-proftpd/compare/v1.2.0...v1.3.0
+[1.2.0]: https://github.com/markt-de/puppet-proftpd/compare/v1.1.1...v1.2.0
+[1.1.1]: https://github.com/markt-de/puppet-proftpd/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/markt-de/puppet-proftpd/compare/v1.0.0...v1.1.0
+[#53]: https://github.com/markt-de/puppet-proftpd/issues/53
+[#50]: https://github.com/markt-de/puppet-proftpd/issues/50
+[#49]: https://github.com/markt-de/puppet-proftpd/issues/49
+[#47]: https://github.com/markt-de/puppet-proftpd/issues/47
+[#45]: https://github.com/markt-de/puppet-proftpd/issues/45
+[#44]: https://github.com/markt-de/puppet-proftpd/issues/44
+[#41]: https://github.com/markt-de/puppet-proftpd/issues/41
+[#40]: https://github.com/markt-de/puppet-proftpd/issues/40
+[#39]: https://github.com/markt-de/puppet-proftpd/issues/39
+[#35]: https://github.com/markt-de/puppet-proftpd/issues/35
+[#33]: https://github.com/markt-de/puppet-proftpd/issues/33
+[#32]: https://github.com/markt-de/puppet-proftpd/issues/32
+[#31]: https://github.com/markt-de/puppet-proftpd/issues/31
+[#29]: https://github.com/markt-de/puppet-proftpd/issues/29
+[#28]: https://github.com/markt-de/puppet-proftpd/issues/28
+[#26]: https://github.com/markt-de/puppet-proftpd/issues/26
